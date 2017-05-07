@@ -1,78 +1,50 @@
 var gulp = require('gulp');
-var args = require('yargs').argv;
-var browserSync = require('browser-sync');
-var del = require('del');
-var path = require('path');
-var _ = require('lodash');
-var $ = require('gulp-load-plugins')({ lazy: true });
-var config = require('./gulp.config')();
+var ts = require('gulp-typescript');
+var tsProject = ts.createProject('tsconfig.json');
 
-var tsProject = $.typescript.createProject('tsconfig.json');
-
-var port = process.env.PORT || config.defaultPort;
-
-gulp.task('help', $.taskListing);
-gulp.task('default', ['help']);
-
+// task for building .ts file into .js files
 gulp.task('build', function() {
-  console.log('building typescripts...');
   var tsResult = tsProject.src().pipe(tsProject());
-  return tsResult.js.pipe(gulp.dest(config.build));
+  return tsResult.js.pipe(gulp.dest('./dist'));
 });
+
+// task for copying all *.html files to views folder
+var sourceHtmlFiles = ['app/**/*.html'];
+var sourceStyleFiles = ['app/**/*.css'];
+var assetsFiles = ['app/shared/assets/**/*'];
+var dataFiles = ['app/shared/data/*.json'];
+var destination = 'static/';
 
 gulp.task('copy-htmls', function() {
-  console.log('copying htmls to build folder...');
-  return gulp.src(config.htmls)
-    .pipe(gulp.dest(config.build));
+  return gulp.src(sourceHtmlFiles).pipe(gulp.dest(destination));
+});
+gulp.task('copy-styles', function() {
+  return gulp.src(sourceStyleFiles).pipe(gulp.dest(destination + 'css/'));
+});
+gulp.task('copy-assets', function() {
+  return gulp.src(assetsFiles).pipe(gulp.dest(destination + 'assets/'));
+});
+gulp.task('copy-data', function() {
+  return gulp.src(dataFiles).pipe(gulp.dest(destination + 'data/'));
 });
 
-gulp.task('copy-js', function() {
-  console.log('copying required js files to build folder...');
-  return gulp.src(config.systemjs)
-    .pipe(gulp.dest(config.build));
-});
-
-gulp.task('watch', ['build'], function() {
+// watch task for monitoring any *.ts file changes
+gulp.task('watch', function() {
   gulp.watch([
-    config.tsFiles, 
-    config.htmls, 
-    config.styles, 
-    config.jsons, 
-    config.systemjs], [
+    './**/*.ts',
+    './**/*.html',
+    './**/*.css',
+    './**/*.json'
+  ], [
     'build',
     'copy-htmls',
-    'copy-js'
+    'copy-styles',
+    'copy-assets',
+    'copy-data'
   ])
-})
-
-gulp.task('serve-dev', ['build', 'copy-htmls', 'copy-js'], function() {
-  var nodeOptions = {
-    script: config.nodeServer,
-    deplayTime: 1,
-    env: {
-      'PORT': 8010,
-      'NODE_ENV': 'dev'
-    },
-    watch: [config.app]
-  };
-
-  return $.nodemon(nodeOptions)
-    .on('restart', function(ev) {
-      log('*** nodemon restarted ***');
-      log('files changed on restart: \n' + ev);
-    })
-    .on('start', function() {
-      log('*** nodemon started ***');
-    })
-    .on('crash', function() {
-      log('*** nodemon crashed: script crashed for some reason ***');
-    })
-    .on('exit', function() {
-      log('*** nodemon exited cleanly ***');
-    });
 });
 
-////////
+/////////////////////////////////////////////////////
 function log(msg) {
   if (typeof(msg) === 'object') {
     for (var item in msg) {
