@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "module": "system",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "moduleResolution": "node",
+        "outDir": "build",
+        "rootDir": "./app/",
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules",
+        "typings/index.d.ts",
+        "typings/globals"
+    ]
+}
