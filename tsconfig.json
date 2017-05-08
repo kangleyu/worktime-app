@@ -7,11 +7,12 @@
         "module": "system",
         "target": "es5",
         "noImplicitAny": false,
+        "removeComments": false,
         "sourceMap": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "moduleResolution": "node",
-        "outDir": "dist",
+        "outDir": "dist/app",
         "rootDir": ".",
         "sourceMap": true
     },
@@ -19,5 +20,6 @@
         "node_modules",
         "typings/index.d.ts",
         "typings/globals"
-    ]
+    ],
+    "files": ["app/**/*.ts"]
 }
