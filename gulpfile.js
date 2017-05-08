@@ -8,7 +8,7 @@ const tsconfig = require('./tsconfig.json');
 /////////////////////////////////////////////////////
 // Tasks
 gulp.task('clean', function() {
-  return del('dist/**/*');
+  return del('build/**/*');
 });
 
 gulp.task('build', ['copy:assets'], function() {
@@ -17,7 +17,7 @@ gulp.task('build', ['copy:assets'], function() {
     .pipe(sourcemaps.init())
     .pipe(typescript(tsconfig.compilerOptions))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/app'));
+    .pipe(gulp.dest('build/app'));
 });
 
 gulp.task('copy:assets', function() {
@@ -27,12 +27,12 @@ gulp.task('copy:assets', function() {
     'styles.css',
     'systemjs.config.js',
     '!app/**/*.ts'], { base: './'})
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('copy:libs', ['clean'], function() {
   return gulp.src('node_modules/**/*.*', { base: 'node_modules' })
-    .pipe(gulp.dest('./dist/node_modules'));
+    .pipe(gulp.dest('./build/node_modules'));
 });
 
 /////////////////////////////////////////////////////

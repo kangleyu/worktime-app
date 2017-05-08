@@ -12,7 +12,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "moduleResolution": "node",
-        "outDir": "dist/app",
+        "outDir": "build/app",
         "rootDir": ".",
         "sourceMap": true
     },
