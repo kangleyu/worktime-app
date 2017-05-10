@@ -4,5 +4,4 @@ import { Component } from '@angular/core';
   selector: 'worktime-app',
   template:`<h1>欢迎访问工时系统</h1>`
 })
-export class AppComponent {
-}
+export class AppComponent {}
