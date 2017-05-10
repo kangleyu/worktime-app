@@ -23,7 +23,8 @@ gulp.task('build', ['copy:assets'], function() {
 
 gulp.task('copy:assets', function() {
   return gulp.src([
-    'app/*/*', 
+    '!app/**/*.ts',
+    'app/**/*.*', 
     'index.html', 
     'favicon.ico',
     'styles.css',
