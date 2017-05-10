@@ -4,6 +4,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const util = require('gulp-util');
 const typescript = require('gulp-typescript');
 const tsconfig = require('./tsconfig.json');
+const npmconfig = require('./package.json');
 
 /////////////////////////////////////////////////////
 // Tasks
@@ -24,6 +25,7 @@ gulp.task('copy:assets', function() {
   return gulp.src([
     'app/*/*', 
     'index.html', 
+    'favicon.ico',
     'styles.css',
     'systemjs.config.js',
     '!app/**/*.ts'], { base: './'})
@@ -31,9 +33,26 @@ gulp.task('copy:assets', function() {
 });
 
 gulp.task('copy:libs', ['clean'], function() {
-  return gulp.src('node_modules/**/*.*', { base: 'node_modules' })
+  var modules = Object.keys(npmconfig.dependencies);
+  var files = modules.map(function(module) {
+    return 'node_modules/' + module + '/**/*.*';
+  });
+  return gulp.src(files, { base: 'node_modules' })
     .pipe(gulp.dest('./build/node_modules'));
 });
+
+gulp.task('watch', function() {
+  return gulp.watch([
+    './app/**/*.ts',
+    './app/**/*.html',
+    './app/**/*.css',
+    './app/**/*.json',
+    './index.html',
+    './styles.css',
+    './systemjs.config.js',
+    './favicon.icon'
+    ], ['build']);
+})
 
 /////////////////////////////////////////////////////
 // Help Functions

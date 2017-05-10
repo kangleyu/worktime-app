@@ -6,7 +6,7 @@
   "scripts": {
     "typings": "typings",
     "postinstall": "typings install",
-    "start": "gulp build && lite-server"
+    "start": "concurrently \"gulp watch\" \"lite-server\" "
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "zone.js": "^0.8.10"
   },
   "devDependencies": {
+    "concurrently": "^3.4.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-sourcemaps": "^2.6.0",
