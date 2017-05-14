@@ -1,0 +1,128 @@
+/* Main Content Section Definition 
+ * .wt-container => for whole area
+ * .wt-navbar => for left side bar (will become top bar for mobile version)
+ * .wt-content => for right content area (will become bottom area for mobile version)
+ */
+.wt-container, .wt-content, .wt-navbar {
+  display: flex;
+  max-height: 100%;
+}
+.wt-container {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  flex-flow: row;
+  flex-direction: row;
+}
+.wt-navbar {
+  width: 15%;
+  flex-flow: column;
+  flex-direction: column;
+  background-color: #3498db;
+}
+.wt-content {
+  width: 85%;
+  background-color: #ecf0f1;
+  overflow-y: auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .wt-container {
+    flex-flow: column;
+    flex-direction: column;
+  }
+  .wt-navbar, .wt-content {
+    width: 100%;
+  }
+  .wt-navbar {
+    min-height: 48px;
+  }
+}
+
+/*
+ * Navbar related styles 
+ */
+.wt-navbar-toggle, .wt-navbar-collapse {
+  display: flex;
+}
+/* Hide for the menu item which is for mobile only */
+.wt-toggle-btn {
+  visibility: hidden;
+  border: 1px #fff solid;
+  color: #fff;
+}
+
+.wt-navbar-collapse {
+  flex-flow: column;
+  flex-direction: column;
+}
+
+.wt-navbar-brand {
+  justify-content: center;
+  color: #34495e;
+}
+
+.wt-navbar-menuitem+ .wt-navbar-menuitem {
+  border-top: 1px solid #bdc3c7;
+}
+
+.wt-navbar-menuitem {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  min-height: 44px;
+  text-decoration: none;
+  transition: border, background-color .35s;
+  color: #fff;
+}
+
+.wt-navbar-menuitem span {
+  margin-left: 10px;
+}
+
+.wt-navbar-menuitem:hover,
+.wt-navbar-menuitem:active,
+.wt-navbar-menuitem:focus {
+  background-color: #2980b9;
+  text-decoration: none;
+  color: #fff;
+}
+
+.active {
+  background-color: #474E5D;
+  color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .wt-navbar-collapse {
+    visibility: collapse;
+  }
+  .wt-navbar-toggle {
+    display: block;
+  }
+  .wt-toggle-btn {
+    visibility: visible;
+    border: none;
+  }
+  .navbar-icon-bar {
+    background: #ecf0f1;
+  }
+  .wt-toggle-btn:hover .navbar-icon-bar {
+    background: #bdc3c7;
+  }
+  .wt-toggle-btn:active .navbar-icon-bar {
+    background: #ecf0f1;
+  }
+  .collapse.in {
+    visibility: visible;
+  }
+  .wt-navbar-menuitem {
+    align-items: center;
+    justify-content: left;
+  }
+}
