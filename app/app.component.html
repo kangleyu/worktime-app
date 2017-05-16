@@ -19,36 +19,37 @@
       <a href="#" class="navbar-brand wt-navbar-brand">工时系统</a>
     </div>
     <div id="navbarCollapse" class="collapse wt-navbar-collapse" style="height:0;">
-      <a class="wt-navbar-menuitem" href="#">
+      <a class="wt-navbar-menuitem" routerLink="/dashboard">
         <i class="fa fa-tachometer" aria-hidden="true"></i>
         <span>综合信息</span>
       </a>
-      <a class="wt-navbar-menuitem" href="#">
+      <a class="wt-navbar-menuitem" routerLink="/project">
         <i class="fa fa-tasks" aria-hidden="true"></i>
         <span>项目列表</span>
       </a>
-      <a class="wt-navbar-menuitem" href="#">
+      <a class="wt-navbar-menuitem" routerLink="/employee">
         <i class="fa fa-users" aria-hidden="true"></i>
         <span>员工列表</span>
       </a>
-      <a class="wt-navbar-menuitem" href="#">
+      <a class="wt-navbar-menuitem" routerLink="/worktime">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         <span>工时列表</span>
       </a>
-      <a class="wt-navbar-menuitem" href="#">
+      <a class="wt-navbar-menuitem" routerLink="/payment">
         <i class="fa fa-credit-card" aria-hidden="true"></i>
         <span>生活费用</span>
       </a>
-      <a class="wt-navbar-menuitem" href="#">
+      <a class="wt-navbar-menuitem" routerLink="/worktype">
         <i class="fa fa-address-card" aria-hidden="true"></i>
         <span>工种列表</span>
       </a>
-      <a class="wt-navbar-menuitem" href="#">
+      <a class="wt-navbar-menuitem" routerLink="/statics">
         <i class="fa fa-bar-chart" aria-hidden="true"></i>
         <span>统计信息</span>
       </a>
     </div>
   </nav>
   <div class="wt-content">
+    <router-outlet></router-outlet>
   </div>
 </div>
