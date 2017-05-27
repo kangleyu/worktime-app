@@ -12,7 +12,7 @@ gulp.task('clean', function() {
   return del('build/**/*');
 });
 
-gulp.task('build', ['copy:assets'], function() {
+gulp.task('build', ['copy:assets', 'copy:mocks'], function() {
   log('Start building typescript files...');
   return gulp.src(tsconfig.files)
     .pipe(sourcemaps.init())
@@ -33,6 +33,14 @@ gulp.task('copy:assets', function() {
     .pipe(gulp.dest('build'));
 });
 
+gulp.task('copy:mocks', function() {
+  return gulp.src([
+    'mock.css',
+    'mock.html'
+  ], { base: './'})
+  .pipe(gulp.dest('build/'));
+});
+
 gulp.task('copy:libs', ['clean'], function() {
   var modules = Object.keys(npmconfig.dependencies);
   var files = modules.map(function(module) {
@@ -51,7 +59,9 @@ gulp.task('watch', function() {
     './index.html',
     './styles.css',
     './systemjs.config.js',
-    './favicon.icon'
+    './favicon.icon',
+    './mock.html',
+    './mock.css'
     ], ['build']);
 })
 
