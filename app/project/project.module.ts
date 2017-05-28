@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
-
 import { ProjectComponent } from './project.component';
 
 const projectRoutes: Routes = [

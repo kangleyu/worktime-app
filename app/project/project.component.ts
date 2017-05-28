@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { Toastr, TOASTR_TOKEN } from '../shared/index';
 
 @Component({
   selector: 'wt-project',
@@ -6,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class ProjectComponent {
 
+  constructor(@Inject(TOASTR_TOKEN) private toastr: Toastr) {
+
+  }
+
+  showAlert() {
+    this.toastr.success("Project component alert!");
+  }
 }
