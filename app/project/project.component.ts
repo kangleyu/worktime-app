@@ -1,17 +1,29 @@
-import { Component, Inject } from '@angular/core';
-import { Toastr, TOASTR_TOKEN } from '../shared/index';
+import { 
+  Component, 
+  Inject,
+  OnInit
+} from '@angular/core';
+import { IProject } from '../shared/models/index';
+import { 
+  Toastr, 
+  TOASTR_TOKEN,
+  ProjectService
+} from '../shared/index';
 
 @Component({
   selector: 'wt-project',
   templateUrl: './app/project/project.component.html'
 })
-export class ProjectComponent {
+export class ProjectComponent implements OnInit {
+  projects: IProject[];
 
-  constructor(@Inject(TOASTR_TOKEN) private toastr: Toastr) {
-
+  constructor(private projectService: ProjectService,
+    @Inject(TOASTR_TOKEN) private toastr: Toastr) {
   }
 
-  showAlert() {
-    this.toastr.success("Project component alert!");
+  ngOnInit() {
+    this.projectService.getProjects().subscribe(projects => {
+      this.projects = projects;
+    })
   }
 }
