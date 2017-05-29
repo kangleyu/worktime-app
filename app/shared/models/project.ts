@@ -4,6 +4,6 @@ export interface IProject {
   address: string;
   manager: string;
   state: string;
-  start: Date;
-  end: Date
+  createdAt: Date;
+  updatedAt: Date
 }

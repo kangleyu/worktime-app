@@ -1,6 +1,6 @@
 <h1>PROJECT</h1>
-<section>
-  <table class="table table-bordered table-condensed table-striped">
+<section class="table-container">
+  <table class="table table-striped wt-table">
     <thead>
       <tr>
         <th data-field="name">项目名称</th>
@@ -17,8 +17,8 @@
         <td>{{project.manager}}</td>
         <td>{{project.address}}</td>
         <td>{{project.state}}</td>
-        <td>{{project.start}}</td>
-        <td>{{project.end}}</td>
+        <td>{{project.createdAt | date:"yyyy/MM/dd"}}</td>
+        <td>{{project.updatedAt | date:"yyyy/MM/dd"}}</td>
       </tr>
     </tbody>
   </table>

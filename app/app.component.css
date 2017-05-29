@@ -28,10 +28,11 @@
   flex-direction: column;
 }
 .wt-content-header {
-  display: flex;
+  display: block;
   background: #EDEDED;
   line-height: 1.471;
-  height: 59px;
+  /*height: 59px;*/
+  padding: 10px;
   border-bottom: 1px solid #D9DEE4;
 }
 

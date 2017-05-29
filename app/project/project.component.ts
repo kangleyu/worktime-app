@@ -12,7 +12,8 @@ import {
 
 @Component({
   selector: 'wt-project',
-  templateUrl: './app/project/project.component.html'
+  templateUrl: './app/project/project.component.html',
+  styleUrls: ['./app/project/project.component.css']
 })
 export class ProjectComponent implements OnInit {
   projects: IProject[];
