@@ -1,11 +1,11 @@
-import { 
-  Component, 
+import {
+  Component,
   Inject,
   OnInit
 } from '@angular/core';
 import { IProject } from '../shared/models/index';
-import { 
-  Toastr, 
+import {
+  Toastr,
   TOASTR_TOKEN,
   ProjectService
 } from '../shared/index';
@@ -18,13 +18,18 @@ import {
 export class ProjectComponent implements OnInit {
   projects: IProject[];
 
-  constructor(private projectService: ProjectService,
+  constructor(
+    private projectService: ProjectService,
     @Inject(TOASTR_TOKEN) private toastr: Toastr) {
   }
 
   ngOnInit() {
-    this.projectService.getProjects().subscribe(projects => {
+    this.projectService.getProjects().subscribe((projects) => {
       this.projects = projects;
-    })
+    });
+  }
+
+  showBusy() {
+    this.toastr.info('Busy');
   }
 }
