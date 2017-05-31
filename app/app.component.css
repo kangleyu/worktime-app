@@ -42,6 +42,10 @@
     flex-flow: column;
     flex-direction: column;
   }
+  .wt-container, .wt-content, .wt-navbar {
+    height: auto;
+    max-height: none;
+  }
   .wt-navbar, .wt-content {
     width: 100%;
   }
