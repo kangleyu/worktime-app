@@ -22,7 +22,8 @@ const worktypeRoutes: Routes = [
   ],
   imports:[
     RouterModule.forChild(worktypeRoutes),
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     WorktypeComponent

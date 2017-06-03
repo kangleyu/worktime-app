@@ -22,7 +22,8 @@ const paymentRoutes: Routes = [
   ],
   imports:[
     RouterModule.forChild(paymentRoutes),
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     PaymentComponent

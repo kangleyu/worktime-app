@@ -5,5 +5,5 @@ export interface IProject {
   manager: string;
   state: string;
   createdAt: Date;
-  updatedAt: Date
+  updatedAt: Date;
 }

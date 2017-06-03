@@ -22,7 +22,8 @@ const worktimeRoutes: Routes = [
   ],
   imports:[
     RouterModule.forChild(worktimeRoutes),
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     WorktimeComponent

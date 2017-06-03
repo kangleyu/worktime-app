@@ -1,1 +1,40 @@
-<h1>EMPLOYEE</h1>
+<section class="table-container">
+  <h3>员工列表</h3>
+  <div class="table-action-area">
+  </div>
+  <table class="table table-striped wt-table">
+    <thead>
+      <tr>
+        <th data-field="name">姓名</th>
+        <th data-field="phone">电话</th>
+        <th data-field="email">邮箱</th>
+        <th data-field="age">年龄</th>
+        <th data-field="gender">性别</th>
+        <th data-field="idCard">身份证</th>
+        <th data-field="createdAt">创建时间</th>
+        <th data-field="updatedAt">更新时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employee">
+        <td>{{emp.name}}</td>
+        <td>{{emp.phone}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.age}}</td>
+        <td>{{emp.gender}}</td>
+        <td>{{emp.idCard}}</td>
+        <td>{{emp.createdAt | date:"yyyy/MM/dd"}}</td>
+        <td>{{emp.updatedAt | date:"yyyy/MM/dd"}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+</section>

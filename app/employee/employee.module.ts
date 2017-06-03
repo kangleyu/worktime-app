@@ -22,7 +22,8 @@ const employeeRoutes: Routes = [
   ],
   imports:[
     RouterModule.forChild(employeeRoutes),
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     EmployeeComponent
