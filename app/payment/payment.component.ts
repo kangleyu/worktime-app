@@ -3,6 +3,7 @@ import {
   Inject,
   OnInit
 } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { IPayment } from '../shared/models/index';
 import {
   Toastr,
@@ -19,10 +20,12 @@ export class PaymentComponent implements OnInit {
 
   constructor(
     private paymentService: PaymentService,
+    private titleService: Title,
     @Inject(TOASTR_TOKEN) private toastr: Toastr) {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('生活费用列表');
     this.paymentService.getPayments().subscribe((payments) => {
       this.payments = payments;
     });

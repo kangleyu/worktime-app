@@ -3,6 +3,7 @@ import {
   Inject,
   OnInit
 } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { IProject } from '../shared/models/index';
 import {
   Toastr,
@@ -17,13 +18,16 @@ import {
 })
 export class ProjectComponent implements OnInit {
   projects: IProject[];
+  searchTerm: string;
 
   constructor(
     private projectService: ProjectService,
+    private titleService: Title,
     @Inject(TOASTR_TOKEN) private toastr: Toastr) {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('项目列表');
     this.projectService.getProjects().subscribe((projects) => {
       this.projects = projects;
     });
@@ -31,5 +35,9 @@ export class ProjectComponent implements OnInit {
 
   showBusy() {
     this.toastr.info('Busy');
+  }
+
+  search() {
+    this.toastr.info(this.searchTerm);
   }
 }

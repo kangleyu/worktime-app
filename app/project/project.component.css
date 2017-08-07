@@ -1,0 +1,12 @@
+.table-action-area {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row;
+}
+.table-search {
+  display: flex;
+  
+}
+.table-settings {
+  display: flex;
+}

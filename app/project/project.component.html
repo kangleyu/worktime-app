@@ -1,11 +1,15 @@
 <section class="table-container">
-  <h3>项目列表</h3>
   <div class="table-action-area">
-    <div class="table-settings">
-      <button type="button" (click)="showBusy()">Show Busy</button>
-    </div>
     <div class="table-search">
-      search
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for..." [(ngModel)]="searchTerm">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" (click)="search()">Go!</button>
+        </span>
+      </div>
+    </div>
+    <div class="table-settings">
+      <button type="button" (click)="showBusy()">Settings</button>
     </div>
   </div>
   <table class="table table-striped wt-table">
@@ -32,11 +36,11 @@
   </table>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">上一页</a></li>
       <li class="page-item"><a class="page-link" href="#">1</a></li>
       <li class="page-item"><a class="page-link" href="#">2</a></li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      <li class="page-item"><a class="page-link" href="#">下一页</a></li>
     </ul>
   </nav>
 </section>
