@@ -3,6 +3,7 @@ import {
   Inject,
   OnInit
 } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 import { Title } from '@angular/platform-browser';
 import { IProject } from '../shared/models/index';
 import {
@@ -23,13 +24,18 @@ export class ProjectComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
     private titleService: Title,
+    private activatedRoute: ActivatedRoute,
     @Inject(TOASTR_TOKEN) private toastr: Toastr) {
   }
 
   ngOnInit() {
     this.titleService.setTitle('项目列表');
-    this.projectService.getProjects().subscribe((projects) => {
-      this.projects = projects;
+    this.activatedRoute.params.subscribe((params) => {
+      const index = params['pageIndex'];
+      this.projectService.getProjects().subscribe((projects) => {
+        this.toastr.info('Got projects for page ' + index);
+        this.projects = projects;
+      });
     });
   }
 

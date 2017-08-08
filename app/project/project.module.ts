@@ -9,7 +9,7 @@ import { ProjectComponent } from './project.component';
 
 const projectRoutes: Routes = [
   {
-    path: 'project',
+    path: 'project/:pageIndex',
     component: ProjectComponent
   }
 ];
