@@ -12,27 +12,8 @@
       <button type="button" (click)="showBusy()">Settings</button>
     </div>
   </div>
-  <paginated-table>
-    <thead>
-      <tr>
-        <th data-field="name">项目名称</th>
-        <th data-field="manager">负责人</th>
-        <th data-field="address">工地</th>
-        <th data-field="state">项目状态</th>
-        <th data-field="createdAt">创建时间</th>
-        <th data-field="updatedAt">更新时间</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let project of projects">
-        <td>{{project.name}}</td>
-        <td>{{project.manager}}</td>
-        <td>{{project.address}}</td>
-        <td>{{project.state}}</td>
-        <td>{{project.createdAt | date:"yyyy/MM/dd"}}</td>
-        <td>{{project.updatedAt | date:"yyyy/MM/dd"}}</td>
-      </tr>
-    </tbody>
+  <paginated-table [items]="projects" 
+  [fields]="'name:项目名称|manager:负责人|address:工地|state:项目状态|createdAt:创建时间|updatedAt:更新时间'">
   </paginated-table>
   <nav aria-label="Page navigation example">
     <ul class="pagination">

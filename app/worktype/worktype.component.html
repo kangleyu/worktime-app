@@ -1,23 +1,8 @@
 <section class="table-container">
   <div class="table-action-area">
   </div>
-  <paginated-table>
-    <thead>
-      <tr>
-        <th data-field="worktype">工种</th>
-        <th data-field="lead">负责人</th>
-        <th data-field="createdAt">创建时间</th>
-        <th data-field="updatedAt">更新时间</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let worktype of worktypes">
-        <td>{{worktype.worktype}}</td>
-        <td>{{worktype.lead}}</td>
-        <td>{{worktype.createdAt | date:"yyyy/MM/dd"}}</td>
-        <td>{{worktype.updatedAt | date:"yyyy/MM/dd"}}</td>
-      </tr>
-    </tbody>
+  <paginated-table [items]="worktypes"
+  [fields]="'worktype:工种|lead:负责人|createdAt:创建时间|updatedAt:更新时间'">
   </paginated-table>
   <nav aria-label="Page navigation example">
     <ul class="pagination">

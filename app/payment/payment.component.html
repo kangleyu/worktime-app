@@ -1,33 +1,8 @@
 <section class="table-container">
   <div class="table-action-area">
   </div>
-  <paginated-table>
-    <thead>
-      <tr>
-        <th data-field="employee">员工姓名</th>
-        <th data-field="project">项目</th>
-        <th data-field="isUpperHalf">月旬</th>
-        <th data-field="worktype">工种</th>
-        <th data-field="year">年</th>
-        <th data-field="month">月</th>
-        <th data-field="paid">费用</th>
-        <th data-field="createdAt">创建时间</th>
-        <th data-field="updatedAt">更新时间</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let payment of payments">
-        <td>{{payment.employee}}</td>
-        <td>{{payment.project}}</td>
-        <td>{{payment.isUpperHalf}}</td>
-        <td>{{payment.worktype}}</td>
-        <td>{{payment.year}}</td>
-        <td>{{payment.month}}</td>
-        <td>{{payment.paid}}</td>
-        <td>{{payment.createdAt | date:"yyyy/MM/dd"}}</td>
-        <td>{{payment.updatedAt | date:"yyyy/MM/dd"}}</td>
-      </tr>
-    </tbody>
+  <paginated-table [items]="payments" 
+  [fields]="'employee:员工姓名|project:项目:|isUpperHalf:月旬|worktype:工种|year:年|month:月|paid:费用|createdAt:创建时间|updatedAt:更新时间'">
   </paginated-table>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
