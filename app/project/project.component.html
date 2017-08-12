@@ -12,7 +12,7 @@
       <button type="button" (click)="showBusy()">Settings</button>
     </div>
   </div>
-  <table class="table table-striped wt-table">
+  <paginated-table>
     <thead>
       <tr>
         <th data-field="name">项目名称</th>
@@ -33,7 +33,7 @@
         <td>{{project.updatedAt | date:"yyyy/MM/dd"}}</td>
       </tr>
     </tbody>
-  </table>
+  </paginated-table>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item"><a class="page-link" href="~/page/previous">上一页</a></li>

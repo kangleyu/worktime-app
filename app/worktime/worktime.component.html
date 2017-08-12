@@ -1,7 +1,7 @@
 <section class="table-container">
   <div class="table-action-area">
   </div>
-  <table class="table table-striped wt-table">
+  <paginated-table>
     <thead>
       <tr>
         <th data-field="employee">员工姓名</th>
@@ -26,7 +26,7 @@
         <td>{{worktime.updatedAt | date:"yyyy/MM/dd"}}</td>
       </tr>
     </tbody>
-  </table>
+  </paginated-table>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item"><a class="page-link" href="#">Previous</a></li>
