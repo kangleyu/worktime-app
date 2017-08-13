@@ -13,10 +13,30 @@ export class ProjectService {
   constructor(private http: Http) {
   }
 
-  public getProjects(): Observable<IProject[]> {
-    return this.http.get("http://localhost:8010/api/project")
+  public getProjects(searchTerm: string, pageIndex: number, pageSize: number): Observable<IProject[]> {
+    const index = pageIndex || 1;
+    const size = pageSize || 10;
+    let requestUrl = "";
+
+    if (searchTerm !== undefined && searchTerm.length > 0) {
+      requestUrl = "http://localhost:8010/api/project/search/" + encodeURIComponent(searchTerm);
+    } else {
+      requestUrl = "http://localhost:8010/api/project";
+    }
+    requestUrl += "/page/" + index + "/size/" + size;
+    return this.http.get(requestUrl)
       .map((response: Response) => {
         return response.json() as IProject[];
+      })
+      .catch(Handlers.handleError);
+  }
+
+  public getTotalProjects(): Observable<number> {
+    const requestUrl = "http://localhost:8010/api/project/total";
+
+    return this.http.get(requestUrl)
+      .map((response: Response) => {
+        return response.json() as number;
       })
       .catch(Handlers.handleError);
   }

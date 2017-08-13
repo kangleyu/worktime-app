@@ -20,6 +20,13 @@ import {
 export class ProjectComponent implements OnInit {
   projects: IProject[];
   searchTerm: string;
+  isBusy: boolean;
+  noData: boolean;
+  total: number;
+  totalPages: number;
+  pages = [];
+
+  private defaultPageSize: number = 3;
 
   constructor(
     private projectService: ProjectService,
@@ -32,18 +39,46 @@ export class ProjectComponent implements OnInit {
     this.titleService.setTitle('项目列表');
     this.activatedRoute.params.subscribe((params) => {
       const index = params['pageIndex'];
-      this.projectService.getProjects().subscribe((projects) => {
+      this.projectService.getProjects(this.searchTerm, 1, this.defaultPageSize).subscribe((projects) => {
         this.toastr.info('Got projects for page ' + index);
         this.projects = projects;
+      });
+      this.projectService.getTotalProjects().subscribe((count) => {
+        this.total = count;
+        const tPages = Math.ceil(count/this.defaultPageSize);
+        this.totalPages = tPages;
+        for(let i = 1; i <= tPages; i++) {
+          this.pages.push(i);
+        }
       });
     });
   }
 
-  showBusy() {
-    this.toastr.info('Busy');
+  getDataOnPage(index) {
+    this.isBusy = true;
+    this.projects = [];
+    this.projectService.getProjects(this.searchTerm, index, this.defaultPageSize).subscribe((projects) => {
+      if (projects.length === 0) {
+        this.noData = true;
+      } else {
+        this.projects = projects;
+        this.noData = false;
+      }
+      this.isBusy = false;
+    });
   }
 
   search() {
-    this.toastr.info(this.searchTerm);
+    this.projects = [];
+    this.isBusy = true;
+    this.projectService.getProjects(this.searchTerm, 1, this.defaultPageSize).subscribe((projects) => {
+      if (projects.length === 0) {
+        this.noData = true;
+      } else {
+        this.projects = projects;
+        this.noData = false;
+      }
+      this.isBusy = false;
+    });
   }
 }
