@@ -23,6 +23,7 @@ export class PageBasedComponent {
   }
 
   public search() {
+    this.pages = [];
     this.searchInternal(this.searchTerm, 1, this.defaultPageSize);
   }
 

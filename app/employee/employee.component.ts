@@ -45,4 +45,18 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
       });
     });
   }
+
+  searchInternal(term: string, index: number, size: number) {
+    this.employee = [];
+    this.isBusy = true;
+    this.employeeService.getItems(term, index, size).subscribe((employee) => {
+      if (employee.length === 0) {
+        this.noData = true;
+      } else {
+        this.employee = employee;
+        this.noData = false;
+      }
+      this.isBusy = false;
+    });
+  }
 }

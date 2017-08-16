@@ -45,4 +45,18 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
       });
     });
   }
+
+  searchInternal(term: string, index: number, size: number) {
+    this.payments = [];
+    this.isBusy = true;
+    this.paymentService.getItems(term, index, size).subscribe((payments) => {
+      if (payments.length === 0) {
+        this.noData = true;
+      } else {
+        this.payments = payments;
+        this.noData = false;
+      }
+      this.isBusy = false;
+    });
+  }
 }

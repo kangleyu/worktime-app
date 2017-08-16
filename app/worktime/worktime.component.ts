@@ -45,4 +45,18 @@ export class WorktimeComponent extends PageBasedComponent implements OnInit {
       });
     });
   }
+
+  searchInternal(term: string, index: number, size: number) {
+    this.worktimes = [];
+    this.isBusy = true;
+    this.worktimeService.getItems(term, index, size).subscribe((worktimes) => {
+      if (worktimes.length === 0) {
+        this.noData = true;
+      } else {
+        this.worktimes = worktimes;
+        this.noData = false;
+      }
+      this.isBusy = false;
+    });
+  }
 }

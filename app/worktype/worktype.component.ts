@@ -45,4 +45,18 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
       });
     });
   }
+
+  searchInternal(term: string, index: number, size: number) {
+    this.worktypes = [];
+    this.isBusy = true;
+    this.worktypeService.getItems(term, index, size).subscribe((worktypes) => {
+      if (worktypes.length === 0) {
+        this.noData = true;
+      } else {
+        this.worktypes = worktypes;
+        this.noData = false;
+      }
+      this.isBusy = false;
+    });
+  }
 }
