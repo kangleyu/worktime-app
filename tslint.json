@@ -26,7 +26,8 @@
     ],
     "trailing-comma": [
       false
-    ]
+    ],
+    "no-empty": false
   },
   "rulesDirectory": [
   ]

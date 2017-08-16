@@ -1,23 +1,17 @@
-import { EventEmitter, Injectable } from "@angular/core";
-import { Headers, Http, RequestOptions, Response } from "@angular/http";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
+import { BaseService } from "./base.service";
 import { IWorktime } from "./models/index";
-
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 
-import { Handlers } from "./handlers";
-
 @Injectable()
-export class WorktimeService {
-  constructor(private http: Http) {
-  }
-
-  public getWorktimes(): Observable<IWorktime[]> {
-    return this.http.get("http://localhost:8010/api/worktime")
-      .map((response: Response) => {
-        return response.json() as IWorktime[];
-      })
-      .catch(Handlers.handleError);
+export class WorktimeService extends BaseService<IWorktime> {
+  constructor(http: Http) {
+    super(
+      http,
+      "http://localhost:8010/api/worktime/search/",
+      "http://localhost:8010/api/worktime",
+      "http://localhost:8010/api/worktime/total");
   }
 }

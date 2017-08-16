@@ -1,23 +1,17 @@
-import { EventEmitter, Injectable } from "@angular/core";
-import { Headers, Http, RequestOptions, Response } from "@angular/http";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
+import { BaseService } from "./base.service";
 import { IPayment } from "./models/index";
-
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 
-import { Handlers } from "./handlers";
-
 @Injectable()
-export class PaymentService {
-  constructor(private http: Http) {
-  }
-
-  public getPayments(): Observable<IPayment[]> {
-    return this.http.get("http://localhost:8010/api/payment")
-      .map((response: Response) => {
-        return response.json() as IPayment[];
-      })
-      .catch(Handlers.handleError);
+export class PaymentService extends BaseService<IPayment> {
+  constructor(http: Http) {
+    super(
+      http,
+      "http://localhost:8010/api/payment/search/",
+      "http://localhost:8010/api/payment",
+      "http://localhost:8010/api/payment/total");
   }
 }

@@ -1,23 +1,17 @@
-import { EventEmitter, Injectable } from "@angular/core";
-import { Headers, Http, RequestOptions, Response } from "@angular/http";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
 import { IEmployee } from "./models/index";
-
+import { BaseService } from "./base.service";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 
-import { Handlers } from "./handlers";
-
 @Injectable()
-export class EmployeeService {
-  constructor(private http: Http) {
-  }
-
-  public getEmployee(): Observable<IEmployee[]> {
-    return this.http.get("http://localhost:8010/api/employee")
-      .map((response: Response) => {
-        return response.json() as IEmployee[];
-      })
-      .catch(Handlers.handleError);
+export class EmployeeService extends BaseService<IEmployee> {
+  constructor(http: Http) {
+    super(
+      http,
+      "http://localhost:8010/api/employee/search/",
+      "http://localhost:8010/api/employee",
+      "http://localhost:8010/api/employee/total");
   }
 }
