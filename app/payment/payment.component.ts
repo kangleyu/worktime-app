@@ -59,4 +59,8 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
       this.isBusy = false;
     });
   }
+
+  createNewItem() {
+    this.toastr.info("creating new item.");
+  }
 }
