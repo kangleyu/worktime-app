@@ -16,7 +16,8 @@ import {
   PaymentService,
   WorktimeService,
   WorktypeService,
-  PaginatedTableComponent
+  PaginatedTableComponent,
+  TableToolbarComponent
 } from "./index";
 
 declare const toastr: Toastr;
@@ -24,7 +25,8 @@ declare const jQuery: any;
 
 @NgModule({
   declarations: [
-    PaginatedTableComponent
+    PaginatedTableComponent,
+    TableToolbarComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ declare const jQuery: any;
     FormsModule,
     HttpModule,
     BrowserModule,
-    PaginatedTableComponent
+    PaginatedTableComponent,
+    TableToolbarComponent
   ],
   providers: [
     { provide: TOASTR_TOKEN, useValue: toastr },

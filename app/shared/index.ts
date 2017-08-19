@@ -7,3 +7,4 @@ export * from "./worktime.service";
 export * from "./worktype.service";
 
 export * from "./components/paginated-table/paginated-table.component";
+export * from "./components/toolbar/toolbar.component";

@@ -29,7 +29,7 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.titleService.setTitle('生活费用列表');
+    this.titleService.setTitle('工资暂支列表');
     this.activatedRoute.params.subscribe((params) => {
       const index = params['pageIndex'];
       this.paymentService.getItems(this.searchTerm, 1, this.defaultPageSize).subscribe((payments) => {

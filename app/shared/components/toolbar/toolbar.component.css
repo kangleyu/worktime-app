@@ -1,0 +1,45 @@
+.table-actions,
+.table-actions-group  {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row;
+}
+
+.table-actions-group 
+{
+  margin: 0px 10px 0px 0px;
+}
+
+.btn-toolbar-item {
+  display: block;
+  padding: 3px;
+  margin: 0px 2px;
+  background: transparent;
+  font-size: 14px;
+}
+
+.toolbar-nav {
+  color: #3498db;
+}
+
+.toolbar-add {
+  color: #e74c3c;
+}
+
+.toolbar-refresh {
+  color: #2c3e50;
+}
+
+.toolbar-export {
+  color: #2ecc71;
+}
+
+.text-toolbar-item {
+  display: inline-block;
+  width: 26px;
+  height: 28px;
+  font-size: 10px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}

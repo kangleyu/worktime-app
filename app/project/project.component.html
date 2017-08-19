@@ -10,21 +10,7 @@
     </div> 
   </div>
   <div class="table-action-area">
-    <div class="table-actions">
-      <div class="table-actions-group">
-        <button class="btn btn-toolbar-item toolbar-nav"><span class="glyphicon glyphicon-arrow-left"></span></button>
-        <button class="btn btn-toolbar-item toolbar-nav"><span class="glyphicon glyphicon-arrow-right"></span></button>
-      </div>
-      <div class="table-actions-group">
-        <input type="text" class="text-toolbar-item" placeholder="页码"/>
-        <button class="btn btn-toolbar-item toolbar-nav">跳转</button>
-      </div>
-      <div class="table-actions-group">
-        <button class="btn btn-toolbar-item toolbar-add"><span class="glyphicon glyphicon-plus"></span></button>
-        <button class="btn btn-toolbar-item toolbar-refresh"><span class="glyphicon glyphicon-refresh"></span></button>
-        <button class="btn btn-toolbar-item toolbar-export"><span class="glyphicon glyphicon-save" ></span></button>
-      </div>
-    </div>
+    <table-toolbar></table-toolbar>
   </div>
   <paginated-table [items]="projects" 
   [fields]="'name:项目名称|manager:负责人|address:工地|state:项目状态|createdAt:创建时间|updatedAt:更新时间'"
