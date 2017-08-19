@@ -1,27 +1,41 @@
 <section class="table-container">
-  <div class="table-action-area">
-    <div class="table-search">
+  <div class="table-search-area">
+     <div class="table-search">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="输入搜索内容..." [(ngModel)]="searchTerm">
+        <input type="text" class="form-control text-search" placeholder="输入搜索内容..." [(ngModel)]="searchTerm">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" (click)="search()">搜索</button>
+          <button class="btn btn-default" type="button" (click)="search()"><span class="glyphicon glyphicon-search"></span></button>
         </span>
       </div>
+    </div> 
+  </div>
+  <div class="table-action-area">
+    <div class="table-actions">
+      <div class="table-actions-group">
+        <button class="btn btn-toolbar-item toolbar-nav"><span class="glyphicon glyphicon-arrow-left"></span></button>
+        <button class="btn btn-toolbar-item toolbar-nav"><span class="glyphicon glyphicon-arrow-right"></span></button>
+      </div>
+      <div class="table-actions-group">
+        <input type="text" class="text-toolbar-item" placeholder="页码"/>
+        <button class="btn btn-toolbar-item toolbar-nav">跳转</button>
+      </div>
+      <div class="table-actions-group">
+        <button class="btn btn-toolbar-item toolbar-add"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-toolbar-item toolbar-refresh"><span class="glyphicon glyphicon-refresh"></span></button>
+        <button class="btn btn-toolbar-item toolbar-export"><span class="glyphicon glyphicon-save" ></span></button>
+      </div>
     </div>
-    <!-- <div class="table-settings">
-      <button type="button">Settings</button>
-    </div> -->
   </div>
   <paginated-table [items]="projects" 
   [fields]="'name:项目名称|manager:负责人|address:工地|state:项目状态|createdAt:创建时间|updatedAt:更新时间'"
   [busy]="isBusy"
   [hasData]="!noData">
   </paginated-table>
-  <nav aria-label="Page navigation example">
+  <!-- <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item"><a class="page-link" href="javascript:void(0)" (click)="getDataOnPage(1)">上一页</a></li>
-      <li class="page-item" *ngFor="let page of pages"><a class="page-link" href="javascript:void(0)" (click)="getDataOnPage(page)">{{page|number}}</a></li>
+       <li class="page-item" *ngFor="let page of pages"><a class="page-link" href="javascript:void(0)" (click)="getDataOnPage(page)">{{page|number}}</a></li> 
       <li class="page-item"><a class="page-link" href="javascript:void(0)" (click)="getDataOnPage(totalPages)">下一页</a></li>
     </ul>
-  </nav>
+  </nav> -->
 </section>

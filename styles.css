@@ -30,3 +30,88 @@ body {
   color: #fff;
   background-color: #34495e;
 }
+
+/* top acation area of table */
+.table-action-area, 
+.table-search-area {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row;
+  margin: 10px 0px;
+}
+.table-action-area {
+  display: block;
+  border-radius: 3px;
+  background: #ecf0f1;
+  padding: 3px 0px;
+}
+.table-search {
+  display: flex;
+}
+.table-actions,
+.table-actions-group  {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row;
+}
+
+.table-actions-group 
+{
+  margin: 0px 10px 0px 0px;
+}
+
+.btn-toolbar-item {
+  display: block;
+  padding: 3px;
+  margin: 0px 2px;
+  background: transparent;
+  font-size: 14px;
+}
+
+/* search text area */
+.text-search {
+  color:#2c3e50;
+  background: #ecf0f1;
+}
+input[type="text"].text-search::-webkit-input-placeholder { 
+  font-size: 12px;
+  color: #7f8c8d;
+}
+input[type="text"].text-search::placeholder { 
+  font-size: 12px;
+  color: #7f8c8d;
+}
+input[type="text"].text-search::-moz-placeholder { 
+  font-size: 12px;
+  color: #7f8c8d;
+}
+input[type="text"].text-search:-ms-input-placeholder  { 
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+.toolbar-nav {
+  color: #3498db;
+}
+
+.toolbar-add {
+  color: #e74c3c;
+}
+
+.toolbar-refresh {
+  color: #2c3e50;
+}
+
+.toolbar-export {
+  color: #2ecc71;
+}
+
+.text-toolbar-item {
+  display: inline-block;
+  width: 26px;
+  height: 28px;
+  font-size: 10px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
