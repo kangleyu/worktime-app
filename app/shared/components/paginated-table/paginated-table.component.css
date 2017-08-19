@@ -1,0 +1,19 @@
+/* table */
+.wt-table {
+  color: #73879C;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 12px;
+  width: 480px;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 20px;
+}
+
+.wt-table td, .wt-table th {
+  padding: 1em;
+}
+
+.wt-table thead tr th {
+  color: #fff;
+  background-color: #34495e;
+} 

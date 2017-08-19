@@ -8,13 +8,16 @@ import {
 
 @Component({
   selector: 'paginated-table',
-  templateUrl: './app/shared/components/paginated-table/paginated-table.component.html'
+  templateUrl: './app/shared/components/paginated-table/paginated-table.component.html',
+  styleUrls: ['./app/shared/components/paginated-table/paginated-table.component.css']
 })
 export class PaginatedTableComponent implements OnChanges {
   @Input() items: any;
   @Input() fields: string;
   @Input() busy: boolean;
   @Input() hasData: boolean;
+
+  tableMessage: string = "数据更新于2017年10月1日 11:25PM";
 
   constructor(private elementRef: ElementRef) {
   }
@@ -30,7 +33,7 @@ export class PaginatedTableComponent implements OnChanges {
         this.items !== undefined &&
         this.items.length > 0) {
         const fieldsList = this.fields.split('|');
-        let inner = "<table class=\"table table-striped wt-table\">";
+        let inner = "<table class=\"wt-table\">";
         fieldsList.forEach((ele) => {
           const separatorIndex = ele.indexOf(':');
           inner += "<th data-field=\"" +
@@ -46,7 +49,14 @@ export class PaginatedTableComponent implements OnChanges {
           });
           inner +="</tr>";
         });
-        inner += "</tbody></table>";
+        inner += "</tbody>";
+        inner += "<tfoot><tr><td colspan=\"";
+        inner += (fieldsList.length - 1) + "";
+        inner += `\"><em>`;
+        inner += this.tableMessage;
+        inner += `</em>
+        </td><td>&nbsp;</td></tr></tfoot>`;
+        inner += "</table>";
         this.elementRef.nativeElement.innerHTML = inner;
       }
     }
