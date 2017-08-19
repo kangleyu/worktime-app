@@ -10,7 +10,16 @@
     </div> 
   </div>
   <div class="table-action-area">
-    <table-toolbar></table-toolbar>
+    <table-toolbar
+    (previous)="gotoPage($event)"
+    (next)="gotoPage($event)"
+    (goto)="gotoPage($event)"
+    (create)="createNewItem()"
+    (refresh)="refreshTable()"
+    (export)="exportTable()"
+    [current]="currentPage"
+    [isPreviousValid]="currentPage > 1"
+    [isNextValid]="currentPage < totalPages"></table-toolbar>
   </div>
   <paginated-table [items]="employee" 
   [fields]="'name:姓名|phone:电话|email:邮箱|age:年龄|gender:性别|idCard:身份证|createdAt:创建时间|updatedAt:更新时间'"
