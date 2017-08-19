@@ -1,15 +1,25 @@
 <div class="table-actions">
   <div class="table-actions-group">
-    <button class="btn btn-toolbar-item toolbar-nav"><span class="glyphicon glyphicon-arrow-left"></span></button>
-    <button class="btn btn-toolbar-item toolbar-nav"><span class="glyphicon glyphicon-arrow-right"></span></button>
+    <button class="btn btn-toolbar-item toolbar-nav" (click)="previousAction()" [disabled]="!isPreviousValid">
+      <span class="glyphicon glyphicon-arrow-left"></span>
+    </button>
+    <button class="btn btn-toolbar-item toolbar-nav" (click)="nextAction()" [disabled]="!isNextValid">
+      <span class="glyphicon glyphicon-arrow-right"></span>
+    </button>
   </div>
   <div class="table-actions-group">
-    <input type="text" class="text-toolbar-item" placeholder="页码" />
-    <button class="btn btn-toolbar-item toolbar-nav">跳转</button>
+    <input type="text" class="text-toolbar-item" placeholder="页码" [(ngModel)]="gotoPage" />
+    <button class="btn btn-toolbar-item toolbar-nav" (click)="gotoAction()">跳转</button>
   </div>
   <div class="table-actions-group">
-    <button class="btn btn-toolbar-item toolbar-add"><span class="glyphicon glyphicon-plus"></span></button>
-    <button class="btn btn-toolbar-item toolbar-refresh"><span class="glyphicon glyphicon-refresh"></span></button>
-    <button class="btn btn-toolbar-item toolbar-export"><span class="glyphicon glyphicon-save" ></span></button>
+    <button class="btn btn-toolbar-item toolbar-add" (click)="createAction()">
+      <span class="glyphicon glyphicon-plus"></span>
+    </button>
+    <button class="btn btn-toolbar-item toolbar-refresh" (click)="refreshAction()">
+      <span class="glyphicon glyphicon-refresh"></span>
+    </button>
+    <button class="btn btn-toolbar-item toolbar-export" (click)="exportAction()">
+      <span class="glyphicon glyphicon-save" ></span>
+    </button>
   </div>
 </div>

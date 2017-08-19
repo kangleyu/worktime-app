@@ -31,6 +31,7 @@ declare const jQuery: any;
   imports: [
     CommonModule,
     HttpModule,
+    FormsModule,
     BrowserModule
   ],
   exports: [

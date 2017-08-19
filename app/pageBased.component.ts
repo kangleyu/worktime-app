@@ -12,20 +12,41 @@ export class PageBasedComponent {
   public noData: boolean;
   public total: number;
   public totalPages: number;
+  public currentPage: number;
   public pages = [];
 
   public defaultPageSize: number = 3;
 
-  constructor(@Inject(TOASTR_TOKEN) toastr: Toastr) { }
+  constructor(@Inject(TOASTR_TOKEN) toastr: Toastr) {
+    this.currentPage = 1;
+  }
 
   public getDataOnPage(index) {
-    this.searchInternal(this.searchTerm, index, this.defaultPageSize);
+    this.currentPage = index;
+    this.searchInternal(this.searchTerm, this.currentPage, this.defaultPageSize);
   }
 
   public search() {
+    this.currentPage = 1;
     this.pages = [];
-    this.searchInternal(this.searchTerm, 1, this.defaultPageSize);
+    this.searchInternal(this.searchTerm, this.currentPage, this.defaultPageSize);
   }
 
   searchInternal(term: string, index: number, size: number) { }
+
+  gotoPage(page) {
+    if (page > 0 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.searchInternal(this.searchTerm, page, this.defaultPageSize);
+    }
+  }
+
+  createNewItem() {
+  }
+
+  refreshTable() {
+  }
+
+  exportTable() {
+  }
 }
