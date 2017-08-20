@@ -5,13 +5,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
+import { NotFoundComponent } from './notFound.component';
 
-import { DashboardComponent } from './dashboard.component';
-
-const dashboardRoutes: Routes = [
+const errorRoutes: Routes = [
   {
-    path: '',
-    component: DashboardComponent
+    path: '*',
+    component: NotFoundComponent
   }
 ];
 
@@ -21,14 +20,14 @@ const dashboardRoutes: Routes = [
     SharedModule
   ],
   imports:[
-    RouterModule.forChild(dashboardRoutes),
+    RouterModule.forChild(errorRoutes),
     RouterModule,
     SharedModule
   ],
   declarations: [
-    DashboardComponent
+    NotFoundComponent
   ],
   providers: [
   ]
 })
-export class DashboardModule { }
+export class ErrorModule { }

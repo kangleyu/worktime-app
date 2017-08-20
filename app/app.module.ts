@@ -9,6 +9,7 @@ import { ProjectModule } from "./project/project.module";
 import { WorktimeModule } from "./worktime/worktime.module";
 import { WorktypeModule } from "./worktype/worktype.module";
 import { StaticsModule } from "./statics/statics.module";
+import { ErrorModule } from "./error/error.module";
 
 import { AppComponent } from './app.component';
 
@@ -23,7 +24,8 @@ import { AppComponent } from './app.component';
     ProjectModule,
     WorktimeModule,
     WorktypeModule,
-    StaticsModule
+    StaticsModule,
+    ErrorModule
   ],
   declarations: [
     AppComponent

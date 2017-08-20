@@ -12,9 +12,17 @@
     <button class="btn btn-toolbar-item toolbar-nav" (click)="gotoAction()">跳转</button>
   </div>
   <div class="table-actions-group">
-    <button class="btn btn-toolbar-item toolbar-add" (click)="createAction()">
+    <!-- <button class="btn btn-toolbar-item toolbar-add" (click)="createAction()">
       <span class="glyphicon glyphicon-plus"></span>
-    </button>
+    </button> -->
+    <modal-window [caption]="'新建'" [modalId]="'createNewModal'" [dismissActionName]="'关闭'" [commitActionName]="'保存'">
+      <button trigger class="btn btn-toolbar-item toolbar-add" (click)="createAction()" data-toggle="modal" data-target="#createNewModal">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+      <div content>
+        <ng-content addTemplate></ng-content>
+      </div>
+    </modal-window>
     <button class="btn btn-toolbar-item toolbar-refresh" (click)="refreshAction()">
       <span class="glyphicon glyphicon-refresh"></span>
     </button>

@@ -1,7 +1,9 @@
 import {
   Component,
   Inject,
-  OnInit
+  OnInit,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Title } from '@angular/platform-browser';
@@ -19,6 +21,9 @@ import { PageBasedComponent } from "../pageBased.component";
   styleUrls: ['./app/project/project.component.css']
 })
 export class ProjectComponent extends PageBasedComponent implements OnInit {
+  @ViewChild('myModal')
+  myModal: ElementRef;
+
   projects: IProject[];
 
   constructor(
@@ -59,5 +64,12 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
       }
       this.isBusy = false;
     });
+  }
+
+  createNewItem() {
+  }
+
+  exportTable() {
+    this.toastr.info('export table');
   }
 }
