@@ -2,7 +2,7 @@
  * Shared module where we defined any shared components
  */
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,7 +18,12 @@ import {
   WorktypeService,
   PaginatedTableComponent,
   TableToolbarComponent,
-  ModalWindowComponent
+  ModalWindowComponent,
+  ProjectEditorComponent,
+  EmployeeEditorComponent,
+  PaymentEditorComponent,
+  WorktypeEditorComponent,
+  WorkimetEditorComponent
 } from "./index";
 
 declare const toastr: Toastr;
@@ -28,7 +33,12 @@ declare const jQuery: any;
   declarations: [
     PaginatedTableComponent,
     TableToolbarComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    ProjectEditorComponent,
+    EmployeeEditorComponent,
+    PaymentEditorComponent,
+    WorktypeEditorComponent,
+    WorkimetEditorComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +53,12 @@ declare const jQuery: any;
     BrowserModule,
     PaginatedTableComponent,
     TableToolbarComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    ProjectEditorComponent,
+    EmployeeEditorComponent,
+    PaymentEditorComponent,
+    WorktypeEditorComponent,
+    WorkimetEditorComponent
   ],
   providers: [
     { provide: TOASTR_TOKEN, useValue: toastr },
@@ -52,7 +67,8 @@ declare const jQuery: any;
     EmployeeService,
     PaymentService,
     WorktimeService,
-    WorktypeService
+    WorktypeService,
+    DatePipe
   ]
 })
 export class SharedModule {

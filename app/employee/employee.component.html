@@ -1,29 +1,25 @@
 <section class="table-container">
   <div class="table-search-area">
-     <div class="table-search">
+    <div class="table-search">
       <div class="input-group">
         <input type="text" class="form-control text-search" placeholder="输入搜索内容..." [(ngModel)]="searchTerm">
         <span class="input-group-btn">
           <button class="btn btn-default top-search-btn" type="button" (click)="search()"><span class="glyphicon glyphicon-search"></span></button>
         </span>
       </div>
-    </div> 
+    </div>
   </div>
   <div class="table-action-area">
-    <table-toolbar
-    (previous)="gotoPage($event)"
-    (next)="gotoPage($event)"
-    (goto)="gotoPage($event)"
-    (create)="createNewItem()"
-    (refresh)="refreshTable()"
-    (export)="exportTable()"
-    [current]="currentPage"
-    [isPreviousValid]="currentPage > 1"
-    [isNextValid]="currentPage < totalPages"></table-toolbar>
+    <table-toolbar (previous)="gotoPage($event)" (next)="gotoPage($event)" (goto)="gotoPage($event)" (create)="createNewItem()"
+      (refresh)="refreshTable()" (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
+      <div addTemplate>
+        <section>
+          <employee-editor></employee-editor>
+        </section>
+      </div>
+    </table-toolbar>
   </div>
-  <paginated-table [items]="employee" 
-  [fields]="'name:姓名|phone:电话|email:邮箱|age:年龄|gender:性别|idCard:身份证|createdAt:创建时间|updatedAt:更新时间'"
-  [busy]="isBusy"
-  [hasData]="!noData">
+  <paginated-table [items]="employee" [fields]="'name:姓名|phone:电话|email:邮箱|age:年龄|gender:性别|idCard:身份证|createdAt:创建时间|updatedAt:更新时间'"
+    [busy]="isBusy" [hasData]="!noData">
   </paginated-table>
 </section>

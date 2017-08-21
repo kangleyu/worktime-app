@@ -5,6 +5,7 @@ import {
   Input,
   ElementRef
 } from '@angular/core';
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: 'paginated-table',
@@ -19,7 +20,7 @@ export class PaginatedTableComponent implements OnChanges {
 
   tableMessage: string = "数据更新于2017年10月1日 11:25PM";
 
-  constructor(private elementRef: ElementRef) {
+  constructor(private elementRef: ElementRef, private datePipe: DatePipe) {
   }
 
   ngOnChanges() {
@@ -45,7 +46,12 @@ export class PaginatedTableComponent implements OnChanges {
         this.items.forEach((data) => {
           inner += "<tr>";
           fieldsList.forEach((ele) => {
-            inner += "<td>" + data[ele.substr(0, ele.indexOf(':'))] + "</td>";
+            const fieldName = ele.substr(0, ele.indexOf(':'));
+            if (fieldName === "createdAt" || fieldName === "updatedAt") {
+              inner += "<td>" + this.datePipe.transform(data[fieldName], "yyyy-MM-dd") + "</td>";
+            } else {
+              inner += "<td>" + data[fieldName] + "</td>";
+            }
           });
           inner +="</tr>";
         });
