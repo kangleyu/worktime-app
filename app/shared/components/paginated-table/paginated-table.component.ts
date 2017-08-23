@@ -29,6 +29,8 @@ export class PaginatedTableComponent implements OnChanges {
     } else if(!this.hasData) {
       this.elementRef.nativeElement.innerHTML = "No Data!";
     } else {
+      const time = new Date();
+      this.tableMessage = "数据更新于 " + time.toLocaleTimeString();
       if(this.fields !== undefined &&
         this.fields.length > 0 &&
         this.items !== undefined &&
