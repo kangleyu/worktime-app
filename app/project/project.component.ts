@@ -23,8 +23,8 @@ import { PageBasedComponent } from "../pageBased.component";
 export class ProjectComponent extends PageBasedComponent implements OnInit {
   @ViewChild('myModal')
   myModal: ElementRef;
-
   projects: IProject[];
+  currentProject: IProject;
 
   constructor(
     private projectService: ProjectService,
@@ -67,6 +67,8 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
   }
 
   createNewItem() {
+    console.log("createNewItem");
+    
   }
 
   exportTable() {

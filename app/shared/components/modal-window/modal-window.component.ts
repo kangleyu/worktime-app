@@ -2,6 +2,7 @@ import {
   Component,
   Input
 } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'modal-window',
@@ -11,6 +12,4 @@ import {
 export class ModalWindowComponent {
   @Input() caption: string;
   @Input() modalId: string;
-  @Input() dismissActionName: string;
-  @Input() commitActionName: string;
 }

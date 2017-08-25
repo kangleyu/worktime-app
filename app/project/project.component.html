@@ -13,7 +13,7 @@
     <table-toolbar (previous)="gotoPage($event)" (next)="gotoPage($event)" (goto)="gotoPage($event)" (create)="createNewItem()"
       (refresh)="refreshTable()" (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
       <div addTemplate>
-        <project-editor></project-editor>
+        <project-editor [project]="currentProject" [dismissActionName]="'关闭'" [commitActionName]="'保存'"></project-editor>
       </div>
     </table-toolbar>
   </div>

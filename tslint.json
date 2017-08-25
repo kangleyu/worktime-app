@@ -30,6 +30,9 @@
     "no-empty": false,
     "max-classes-per-file": [
       7
+    ],
+    "max-line-length": [
+      180
     ]
   },
   "rulesDirectory": [

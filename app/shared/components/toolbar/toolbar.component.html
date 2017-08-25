@@ -12,10 +12,7 @@
     <button class="btn btn-toolbar-item toolbar-nav" (click)="gotoAction()">跳转</button>
   </div>
   <div class="table-actions-group">
-    <!-- <button class="btn btn-toolbar-item toolbar-add" (click)="createAction()">
-      <span class="glyphicon glyphicon-plus"></span>
-    </button> -->
-    <modal-window [caption]="'新建'" [modalId]="'createNewModal'" [dismissActionName]="'关闭'" [commitActionName]="'保存'">
+    <modal-window [caption]="'新建'" [modalId]="'createNewModal'">
       <button trigger class="btn btn-toolbar-item toolbar-add" (click)="createAction()" data-toggle="modal" data-target="#createNewModal">
         <span class="glyphicon glyphicon-plus"></span>
       </button>

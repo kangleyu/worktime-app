@@ -1,32 +1,48 @@
-import { Component } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Input
+} from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {
+  IProject,
+  IEmployee,
+  IPayment,
+  IWorktime,
+  IWorktype
+} from '../../models/index';
+
+export class BaseEditor {
+  @Input() dismissActionName: string;
+  @Input() commitActionName: string;
+}
 
 @Component({
   selector: "project-editor",
-  template: `<section>
-          <form name="newProject" method="post" role="form" data-toggle="validator">
-            <div class="form-group">
-              <input type="text" class="form-control" id="pname" name="pname" placeholder="项目名称" data-error="项目名称不能为空"
-                required>
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group">
-              <select class="form-control" ng-model="newP.plead" data-error="项目名称不能为空" required>
-                  <option value="" selected="selected">--负责人--</option>
-                </select>
-            </div>
-            <div class="form-group">
-              <select class="form-control" ng-model="newP.pstate" data-error="项目名称不能为空" required>
-                  <option value="">--请选择项目状态--</option>
-                  <option value="1">未开工</option>
-                  <option value="2">在建</option>
-                  <option value="3">竣工</option>
-                </select>
-            </div>
-          </form>
-        </section>`,
+  templateUrl: './app/shared/components/editor/project-editor.component.html',
   styleUrls: ['./app/shared/components/editor/editors.component.css']
 })
-export class ProjectEditorComponent {
+export class ProjectEditorComponent extends BaseEditor implements OnInit, OnChanges {
+  @Input() project: IProject;
+
+  ngOnInit() {
+    this.project = {
+      id: 0,
+      name: "Test",
+      address: "",
+      manager: "",
+      state: "1"
+    };
+    console.log("ngOnInit");
+  }
+
+  ngOnChanges() {
+    console.log("ngOnChanges");
+  }
+
+  saveProject(newProject) {
+  }
 }
 
 @Component({
