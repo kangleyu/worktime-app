@@ -11,7 +11,8 @@ import { IProject } from '../shared/models/index';
 import {
   Toastr,
   TOASTR_TOKEN,
-  ProjectService
+  ProjectService,
+  EmployeeService
 } from '../shared/index';
 import { PageBasedComponent } from "../pageBased.component";
 
@@ -25,9 +26,11 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
   myModal: ElementRef;
   projects: IProject[];
   currentProject: IProject;
+  managers: string[];
 
   constructor(
     private projectService: ProjectService,
+    private employeeService: EmployeeService,
     private titleService: Title,
     private activatedRoute: ActivatedRoute,
     @Inject(TOASTR_TOKEN) private toastr: Toastr) {
@@ -40,6 +43,9 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
       const index = params['pageIndex'];
       this.projectService.getItems(this.searchTerm, 1, this.defaultPageSize).subscribe((projects) => {
         this.projects = projects;
+      });
+      this.employeeService.getAll().subscribe((emp) => {
+        this.managers = emp.map<string>((e) => e.name).filter((val, idx, arr) => arr.indexOf(val) === idx);
       });
       this.projectService.getTotalCount().subscribe((count) => {
         this.total = count;
@@ -66,9 +72,23 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
     });
   }
 
-  createNewItem() {
-    console.log("createNewItem");
-    
+  preCreate() {
+    // for creating new project, we should create a new template project and assign it to current project
+    // for editing existing project, we should set currentProject with the current one
+    this.currentProject = {
+      id: 0,
+      name: "",
+      address: "",
+      manager: "",
+      state: "1"
+    };
+  }
+
+  creating(project) {
+    this.projectService.save(project).subscribe((p) => {
+      console.log(p);
+      this.toastr.info("新项目保存成功！");
+    });
   }
 
   exportTable() {

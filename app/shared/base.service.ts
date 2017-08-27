@@ -30,6 +30,13 @@ export class BaseService<T> {
       .catch(Handlers.handleError);
   }
 
+  public getAll(): Observable<T[]> {
+    return this.http.get(this.indexUrl).map((response: Response) => {
+      return response.json() as T[];
+    })
+    .catch(Handlers.handleError);
+  }
+
   public getTotalCount(): Observable<number> {
     const requestUrl = this.totalUrl;
 
@@ -38,5 +45,13 @@ export class BaseService<T> {
         return response.json() as number;
       })
       .catch(Handlers.handleError);
+  }
+
+  public save(item: T): Observable<T> {
+    return this.http.post(this.indexUrl, item)
+    .map((response: Response) => {
+      return response.json() as T;
+    })
+    .catch(Handlers.handleError);
   }
 }

@@ -2,7 +2,10 @@ import {
   Component,
   OnInit,
   OnChanges,
-  Input
+  Input,
+  Output,
+  EventEmitter,
+  Inject
 } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import {
@@ -13,9 +16,24 @@ import {
   IWorktype
 } from '../../models/index';
 
+import {
+  JQ_TOKEN
+} from '../../index';
+
+import {
+  ProjectService
+} from '../../index';
+
 export class BaseEditor {
   @Input() dismissActionName: string;
   @Input() commitActionName: string;
+  @Output() submitAction = new EventEmitter<IProject>();
+
+  constructor(@Inject(JQ_TOKEN) jquery: any) {
+  }
+
+  submitted() {
+  }
 }
 
 @Component({
@@ -25,23 +43,32 @@ export class BaseEditor {
 })
 export class ProjectEditorComponent extends BaseEditor implements OnInit, OnChanges {
   @Input() project: IProject;
+  @Input() managers: string[];
+
+  constructor(private service: ProjectService, @Inject(JQ_TOKEN) private jquery: any) {
+    super(jquery);
+  }
 
   ngOnInit() {
     this.project = {
       id: 0,
-      name: "Test",
+      name: "",
       address: "",
       manager: "",
       state: "1"
     };
-    console.log("ngOnInit");
   }
 
   ngOnChanges() {
-    console.log("ngOnChanges");
   }
 
   saveProject(newProject) {
+    this.submitAction.emit(newProject);
+  }
+
+  submitted() {
+    console.log(this.jquery('#createNewModal'));
+    this.jquery('#createNewModal').modal('hide');
   }
 }
 

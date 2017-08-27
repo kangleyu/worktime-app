@@ -10,10 +10,10 @@
     </div>
   </div>
   <div class="table-action-area">
-    <table-toolbar (previous)="gotoPage($event)" (next)="gotoPage($event)" (goto)="gotoPage($event)" (create)="createNewItem()"
+    <table-toolbar (previous)="gotoPage($event)" (next)="gotoPage($event)" (goto)="gotoPage($event)" (create)="preCreate()"
       (refresh)="refreshTable()" (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
       <div addTemplate>
-        <project-editor [project]="currentProject" [dismissActionName]="'关闭'" [commitActionName]="'保存'"></project-editor>
+        <project-editor [project]="currentProject" [managers]="managers" [dismissActionName]="'关闭'" [commitActionName]="'保存'" (submitAction)="creating($event)"></project-editor>
       </div>
     </table-toolbar>
   </div>

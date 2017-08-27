@@ -41,7 +41,10 @@ export class PageBasedComponent {
     }
   }
 
-  createNewItem() {
+  preCreate() {
+  }
+
+  creating(project) {
   }
 
   refreshTable() {
