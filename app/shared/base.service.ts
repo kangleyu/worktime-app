@@ -27,14 +27,15 @@ export class BaseService<T> {
       .map((response: Response) => {
         return response.json() as T[];
       })
-      .catch(Handlers.handleError);
+      .catch(this.handleError);
   }
 
   public getAll(): Observable<T[]> {
-    return this.http.get(this.indexUrl).map((response: Response) => {
+    return this.http.get(this.indexUrl)
+    .map((response: Response) => {
       return response.json() as T[];
     })
-    .catch(Handlers.handleError);
+    .catch(this.handleError);
   }
 
   public getTotalCount(): Observable<number> {
@@ -44,7 +45,7 @@ export class BaseService<T> {
       .map((response: Response) => {
         return response.json() as number;
       })
-      .catch(Handlers.handleError);
+      .catch(this.handleError);
   }
 
   public save(item: T): Observable<T> {
@@ -52,6 +53,10 @@ export class BaseService<T> {
     .map((response: Response) => {
       return response.json() as T;
     })
-    .catch(Handlers.handleError);
+    .catch(this.handleError);
+  }
+
+  private handleError(error: Response) {
+    return Observable.throw(error.statusText);
   }
 }

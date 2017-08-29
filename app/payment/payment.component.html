@@ -1,29 +1,25 @@
 <section class="table-container">
   <div class="table-search-area">
-     <div class="table-search">
+    <div class="table-search">
       <div class="input-group">
         <input type="text" class="form-control text-search" placeholder="输入搜索内容..." [(ngModel)]="searchTerm">
         <span class="input-group-btn">
           <button class="btn btn-default top-search-btn" type="button" (click)="search()"><span class="glyphicon glyphicon-search"></span></button>
         </span>
       </div>
-    </div> 
+    </div>
   </div>
   <div class="table-action-area">
-    <table-toolbar
-    (previous)="gotoPage($event)"
-    (next)="gotoPage($event)"
-    (goto)="gotoPage($event)"
-    (create)="preCreate()"
-    (refresh)="refreshTable()"
-    (export)="exportTable()"
-    [current]="currentPage"
-    [isPreviousValid]="currentPage > 1"
-    [isNextValid]="currentPage < totalPages"></table-toolbar>
+    <table-toolbar (previous)="gotoPage($event)" (next)="gotoPage($event)" (goto)="gotoPage($event)" (create)="preCreate()" (refresh)="refreshTable()"
+      (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
+      <div addTemplate>
+        <section>
+          <payment-editor [payment]="currentPayment" (submitAction)="creating($event)"></payment-editor>
+        </section>
+      </div>
+    </table-toolbar>
   </div>
-  <paginated-table [items]="payments" 
-  [fields]="'employee:员工姓名|project:项目|isUpperHalf:月旬|worktype:工种|year:年|month:月|paid:费用|createdAt:创建时间|updatedAt:更新时间'"
-  [busy]="isBusy"
-  [hasData]="!noData">
+  <paginated-table [items]="payments" [fields]="'employee:员工姓名|project:项目|isUpperHalf:月旬|worktype:工种|year:年|month:月|paid:费用|createdAt:创建时间|updatedAt:更新时间'"
+    [busy]="isBusy" [hasData]="!noData">
   </paginated-table>
 </section>

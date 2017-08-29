@@ -86,7 +86,6 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
 
   creating(project) {
     this.projectService.save(project).subscribe((p) => {
-      console.log(p);
       this.toastr.info("新项目保存成功！");
     });
   }

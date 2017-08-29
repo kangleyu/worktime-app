@@ -14,7 +14,7 @@
       (refresh)="refreshTable()" (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
       <div addTemplate>
         <section>
-          <employee-editor></employee-editor>
+          <employee-editor [employee]="currentEmployee" (submitAction)="creating($event)"></employee-editor>
         </section>
       </div>
     </table-toolbar>

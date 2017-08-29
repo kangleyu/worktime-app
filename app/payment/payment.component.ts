@@ -61,6 +61,5 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
   }
 
   preCreate() {
-    this.toastr.info("creating new item.");
   }
 }

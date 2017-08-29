@@ -1,22 +1,22 @@
-<form autocomplete="off" #newProjectForm="ngForm" (ngSubmit)="saveItem(newProjectForm.value)">
+<form autocomplete="off">
   <div class="modal-body">
     <section>
       <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="project.name" name="name" id="name" placeholder="项目名称" data-error="项目名称不能为空" required>
+        <input type="text" class="form-control" name="name" id="name" placeholder="项目名称" data-error="项目名称不能为空" required>
         <div class="help-block with-errors"></div>
       </div>
       <div class="form-group">
-        <select class="form-control" [(ngModel)]="project.manager" name="manager" id="manager" data-error="项目名称不能为空" required>
+        <select class="form-control" name="manager" id="manager" data-error="项目名称不能为空" required>
                   <option value="" selected="selected">--负责人--</option>
                   <option [ngValue]="mgr" *ngFor="let mgr of managers">{{mgr}}</option>
                 </select>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="project.address" name="address" id="address" placeholder="工地" data-error="工地不能为空" required>
+        <input type="text" class="form-control" name="address" id="address" placeholder="工地" data-error="工地不能为空" required>
         <div class="help-block with-errors"></div>
       </div>
       <div class="form-group">
-        <select class="form-control" [(ngModel)]="project.state" name="state" id="state" data-error="项目名称不能为空" required>
+        <select class="form-control" name="state" id="state" data-error="项目名称不能为空" required>
                   <option value="">--请选择项目状态--</option>
                   <option value="1">未开工</option>
                   <option value="2">在建</option>
