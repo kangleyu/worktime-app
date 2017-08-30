@@ -1,9 +1,8 @@
 import { Headers, Http, RequestOptions, Response } from "@angular/http";
-import { Handlers } from "./handlers";
-import { Observable } from "rxjs/Observable";
-
+import { Observable } from 'rxjs/Observable';
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
+import 'rxjs/add/observable/throw';
 
 export class BaseService<T> {
   constructor(
@@ -16,6 +15,8 @@ export class BaseService<T> {
     const index = pageIndex || 1;
     const size = pageSize || 10;
     let requestUrl = "";
+
+    console.log("Getting items ... " + Observable);
 
     if (searchTerm !== undefined && searchTerm.length > 0) {
       requestUrl = this.searchUrl + encodeURIComponent(searchTerm);
@@ -57,6 +58,7 @@ export class BaseService<T> {
   }
 
   private handleError(error: Response) {
+    console.log("Handle error " + Observable);
     return Observable.throw(error.statusText);
   }
 }

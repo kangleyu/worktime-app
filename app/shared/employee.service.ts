@@ -2,8 +2,6 @@ import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { IEmployee } from "./models/index";
 import { BaseService } from "./base.service";
-import "rxjs/add/operator/catch";
-import "rxjs/add/operator/map";
 
 @Injectable()
 export class EmployeeService extends BaseService<IEmployee> {
