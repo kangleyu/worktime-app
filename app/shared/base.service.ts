@@ -16,8 +16,6 @@ export class BaseService<T> {
     const size = pageSize || 10;
     let requestUrl = "";
 
-    console.log("Getting items ... " + Observable);
-
     if (searchTerm !== undefined && searchTerm.length > 0) {
       requestUrl = this.searchUrl + encodeURIComponent(searchTerm);
     } else {
@@ -58,7 +56,6 @@ export class BaseService<T> {
   }
 
   private handleError(error: Response) {
-    console.log("Handle error " + Observable);
-    return Observable.throw(error.statusText);
+    return Observable.throw(error._body);
   }
 }
