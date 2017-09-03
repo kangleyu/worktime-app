@@ -79,11 +79,20 @@ export class ProjectEditorComponent extends BaseEditor implements OnInit {
 export class EmployeeEditorComponent extends BaseEditor implements OnInit {
   @Input() employee: IEmployee;
 
-  constructor(private service: EmployeeService, @Inject(JQ_TOKEN) public jquery: any) {
+  constructor(@Inject(JQ_TOKEN) public jquery: any) {
     super(jquery);
   }
 
   ngOnInit() {
+    this.employee = {
+      id: 0,
+      name: "",
+      email: "",
+      phone: "",
+      age: 0,
+      gender: "",
+      idCard: "",
+    };
   }
 }
 
@@ -95,12 +104,25 @@ export class EmployeeEditorComponent extends BaseEditor implements OnInit {
 })
 export class PaymentEditorComponent extends BaseEditor implements OnInit {
   @Input() payment: IPayment;
+  @Input() emps: string[];
+  @Input() projects: string[];
+  @Input() worktypes: string[];
 
   constructor(private service: EmployeeService, @Inject(JQ_TOKEN) public jquery: any) {
     super(jquery);
   }
 
   ngOnInit() {
+    this.payment = {
+      id: 0,
+      employee: "",
+      project: "",
+      worktype: "",
+      year: 2017,
+      month: 1,
+      isUpperHalf: true,
+      paid: 0
+    };
   }
 }
 
@@ -112,12 +134,18 @@ export class PaymentEditorComponent extends BaseEditor implements OnInit {
 })
 export class WorktypeEditorComponent extends BaseEditor implements OnInit {
   @Input() worktype: IWorktype;
+  @Input() emps: string[];
 
   constructor(private service: EmployeeService, @Inject(JQ_TOKEN) public jquery: any) {
     super(jquery);
   }
 
   ngOnInit() {
+    this.worktype = {
+      id: 0,
+      worktype: "",
+      lead: ""
+    };
   }
 }
 
@@ -129,11 +157,25 @@ export class WorktypeEditorComponent extends BaseEditor implements OnInit {
 })
 export class WorkimetEditorComponent extends BaseEditor implements OnInit {
   @Input() worktime: IWorktime;
+  @Input() emps: string[];
+  @Input() projects: string[];
+  @Input() worktypes: string[];
 
-  constructor(private service: EmployeeService, @Inject(JQ_TOKEN) public jquery: any) {
+  constructor(
+    private worktimeService: WorktimeService,
+    @Inject(JQ_TOKEN) public jquery: any) {
     super(jquery);
   }
 
   ngOnInit() {
+    this.worktime = {
+      id: 0,
+      employee: "",
+      project: "",
+      worktype: "",
+      year: 2017,
+      month: 1,
+      worktime: 0
+    };
   }
 }

@@ -41,20 +41,10 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
     this.titleService.setTitle('项目列表');
     this.activatedRoute.params.subscribe((params) => {
       const index = params['pageIndex'];
-      this.projectService.getItems(this.searchTerm, 1, this.defaultPageSize).subscribe((projects) => {
-        this.projects = projects;
-      });
       this.employeeService.getAll().subscribe((emp) => {
         this.managers = emp.map<string>((e) => e.name).filter((val, idx, arr) => arr.indexOf(val) === idx);
       });
-      this.projectService.getTotalCount().subscribe((count) => {
-        this.total = count;
-        const tPages = Math.ceil(count/this.defaultPageSize);
-        this.totalPages = tPages;
-        for(let i = 1; i <= tPages; i++) {
-          this.pages.push(i);
-        }
-      });
+      this.searchInternal(this.searchTerm, this.currentPage, this.defaultPageSize);
     });
   }
 
@@ -69,6 +59,14 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
         this.noData = false;
       }
       this.isBusy = false;
+    });
+    this.projectService.getTotalCount().subscribe((count) => {
+      this.total = count;
+      const tPages = Math.ceil(count/this.defaultPageSize);
+      this.totalPages = tPages;
+      for(let i = 1; i <= tPages; i++) {
+        this.pages.push(i);
+      }
     });
   }
 
@@ -87,6 +85,7 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
   creating(project) {
     this.projectService.save(project).subscribe((p) => {
       this.toastr.info("新项目保存成功！");
+      this.refreshTable();
     }, (err) => {
       this.toastr.error("新建项目失败！");
     });

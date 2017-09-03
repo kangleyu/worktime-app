@@ -14,7 +14,7 @@
       (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
       <div addTemplate>
         <section>
-          <worktime-editor [worktime]="currentWorktime" (submitAction)="creating($event)"></worktime-editor>
+          <worktime-editor [worktime]="currentWorktime" [emps]="emps" [projects]="projects" [worktypes]="worktypes" (submitAction)="creating($event)"></worktime-editor>
         </section>
       </div>
     </table-toolbar>

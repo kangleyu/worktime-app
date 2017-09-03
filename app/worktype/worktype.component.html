@@ -14,7 +14,7 @@
       (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
       <div addTemplate>
         <section>
-          <worktype-editor [worktype]="currentWorktype" (submitAction)="creating($event)"></worktype-editor>
+          <worktype-editor [worktype]="currentWorktype" [emps]="emps" (submitAction)="creating($event)"></worktype-editor>
         </section>
       </div>
     </table-toolbar>

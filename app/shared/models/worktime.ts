@@ -6,6 +6,6 @@ export interface IWorktime {
   year: number;
   month: number;
   worktime: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

@@ -14,7 +14,7 @@
       (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
       <div addTemplate>
         <section>
-          <payment-editor [payment]="currentPayment" (submitAction)="creating($event)"></payment-editor>
+          <payment-editor [payment]="currentPayment" [emps]="emps" [projects]="projects" [worktypes]="worktypes" (submitAction)="creating($event)"></payment-editor>
         </section>
       </div>
     </table-toolbar>

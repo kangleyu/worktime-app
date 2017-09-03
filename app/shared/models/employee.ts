@@ -6,6 +6,6 @@ export interface IEmployee {
   age: number;
   gender: string;
   idCard: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

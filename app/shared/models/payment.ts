@@ -7,6 +7,6 @@ export interface IPayment {
   year: number;
   month: number;
   paid: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

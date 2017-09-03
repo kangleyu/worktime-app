@@ -19,6 +19,7 @@ import { PageBasedComponent } from "../pageBased.component";
 })
 export class EmployeeComponent extends PageBasedComponent implements OnInit {
   employee: IEmployee[];
+  currentEmployee: IEmployee;
 
   constructor(
     private employeeService: EmployeeService,
@@ -32,17 +33,18 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
     this.titleService.setTitle('员工列表');
     this.activatedRoute.params.subscribe((params) => {
       const index = params['pageIndex'];
-      this.employeeService.getItems(this.searchTerm, 1, this.defaultPageSize).subscribe((employee) => {
-        this.employee = employee;
-      });
-      this.employeeService.getTotalCount().subscribe((count) => {
-        this.total = count;
-        const tPages = Math.ceil(count/this.defaultPageSize);
-        this.totalPages = tPages;
-        for(let i = 1; i <= tPages; i++) {
-          this.pages.push(i);
-        }
-      });
+      this.searchInternal(this.searchTerm, this.currentPage, this.defaultPageSize);
+      // this.employeeService.getItems(this.searchTerm, 1, this.defaultPageSize).subscribe((employee) => {
+      //   this.employee = employee;
+      // });
+      // this.employeeService.getTotalCount().subscribe((count) => {
+      //   this.total = count;
+      //   const tPages = Math.ceil(count/this.defaultPageSize);
+      //   this.totalPages = tPages;
+      //   for(let i = 1; i <= tPages; i++) {
+      //     this.pages.push(i);
+      //   }
+      // });
     });
   }
 
@@ -57,6 +59,36 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
         this.noData = false;
       }
       this.isBusy = false;
+    });
+    this.employeeService.getTotalCount().subscribe((count) => {
+      this.total = count;
+      const tPages = Math.ceil(count/this.defaultPageSize);
+      this.totalPages = tPages;
+      for(let i = 1; i <= tPages; i++) {
+        this.pages.push(i);
+      }
+    });
+  }
+
+  preCreate() {
+    // for creating new project, we should create a new template project and assign it to current project
+    // for editing existing project, we should set currentProject with the current one
+    this.currentEmployee = {
+      id: 0,
+      name: "",
+      email: "",
+      phone: "",
+      age: 0,
+      gender: "",
+      idCard: "",
+    };
+  }
+
+  creating(employee) {
+    this.employeeService.save(employee).subscribe((e) => {
+      this.toastr.info("新员工保存成功！");
+    }, (err) => {
+      this.toastr.error("新建员工失败！");
     });
   }
 }

@@ -1,28 +1,16 @@
-<form autocomplete="off" >
+<form autocomplete="off" #newWorktypeForm="ngForm" (ngSubmit)="saveItem(newWorktypeForm.value)">
   <div class="modal-body">
     <section>
       <div class="form-group">
-        <input type="text" class="form-control" name="name" id="name" placeholder="项目名称" data-error="项目名称不能为空" required>
+        <input type="text" class="form-control" [(ngModel)]="worktype.worktype" name="worktype" placeholder="工种" data-error="工种不能为空" required>
         <div class="help-block with-errors"></div>
       </div>
       <div class="form-group">
-        <select class="form-control" name="manager" id="manager" data-error="项目名称不能为空" required>
-                  <option value="" selected="selected">--负责人--</option>
-                  <option [ngValue]="mgr" *ngFor="let mgr of managers">{{mgr}}</option>
-                </select>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="address" id="address" placeholder="工地" data-error="工地不能为空" required>
-        <div class="help-block with-errors"></div>
-      </div>
-      <div class="form-group">
-        <select class="form-control" name="state" id="state" data-error="项目名称不能为空" required>
-                  <option value="">--请选择项目状态--</option>
-                  <option value="1">未开工</option>
-                  <option value="2">在建</option>
-                  <option value="3">竣工</option>
-                </select>
-      </div>
+          <select class="form-control" [(ngModel)]="worktype.lead" name="lead" data-error="负责人不能为空" required>
+            <option value="" selected="selected">--负责人--</option>
+            <option [ngValue]="emp" *ngFor="let emp of emps">{{emp}}</option>
+          </select>
+        </div>
     </section>
   </div>
   <div class="modal-footer">
