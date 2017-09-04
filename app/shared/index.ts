@@ -10,3 +10,5 @@ export * from "./components/paginated-table/paginated-table.component";
 export * from "./components/toolbar/toolbar.component";
 export * from "./components/modal-window/modal-window.component";
 export * from "./components/editor/editors.component";
+
+export * from "./pipes/status.pipe";

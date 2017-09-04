@@ -15,7 +15,7 @@ export class PageBasedComponent {
   public currentPage: number;
   public pages = [];
 
-  public defaultPageSize: number = 3;
+  public defaultPageSize: number = 12;
 
   constructor(@Inject(TOASTR_TOKEN) toastr: Toastr) {
     this.currentPage = 1;
