@@ -1,0 +1,9 @@
+.error input { background-color: #F9BF3B;  }
+.error ::-webkit-input-placeholder { color: #999; }
+.error ::-moz-placeholder { color: #999; }
+.error :-moz-placeholder { color: #999; }
+.error :ms-input-placeholder { color: #999; }
+.form-group em {
+  font-size: 10px;
+  color: #96281B;
+}
