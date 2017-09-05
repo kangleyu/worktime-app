@@ -24,7 +24,8 @@ import {
   PaymentEditorComponent,
   WorktypeEditorComponent,
   WorkimetEditorComponent,
-  StatusPipe
+  StatusPipe,
+  MonthPipe
 } from "./index";
 
 declare const toastr: Toastr;
@@ -70,7 +71,8 @@ declare const jQuery: any;
     WorktimeService,
     WorktypeService,
     DatePipe,
-    StatusPipe
+    StatusPipe,
+    MonthPipe
   ]
 })
 export class SharedModule {

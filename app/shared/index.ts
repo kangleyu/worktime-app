@@ -12,3 +12,4 @@ export * from "./components/modal-window/modal-window.component";
 export * from "./components/editor/editors.component";
 
 export * from "./pipes/status.pipe";
+export * from "./pipes/month.pipe";

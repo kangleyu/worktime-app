@@ -6,7 +6,7 @@ import {
   ElementRef
 } from '@angular/core';
 import { DatePipe } from "@angular/common";
-import { StatusPipe } from "../../index";
+import { StatusPipe, MonthPipe } from "../../index";
 
 @Component({
   selector: 'paginated-table',
@@ -19,6 +19,7 @@ export class PaginatedTableComponent implements OnChanges {
   @Input() busy: boolean;
   @Input() hasData: boolean;
   statusPipe = new StatusPipe();
+  monthPipe = new MonthPipe();
 
   tableMessage: string = "数据更新于2017年10月1日 11:25PM";
 
@@ -55,6 +56,8 @@ export class PaginatedTableComponent implements OnChanges {
               inner += "<td>" + this.datePipe.transform(data[fieldName], "yyyy-MM-dd") + "</td>";
             } else if (fieldName === "state") {
               inner += "<td>" + this.statusPipe.transform(data[fieldName]) + "</td>";
+            } else if (fieldName === "isUpperHalf") {
+              inner += "<td>" + this.monthPipe.transform(data[fieldName]) + "</td>";
             } else {
               inner += "<td>" + data[fieldName] + "</td>";
             }
