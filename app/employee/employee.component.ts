@@ -48,6 +48,9 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
         this.noData = false;
       }
       this.isBusy = false;
+    }, (error) => {
+      this.toastr.error("数据访问失败，请稍后再试！");
+      this.isBusy = false;
     });
     this.employeeService.getTotalCount().subscribe((count) => {
       this.total = count;

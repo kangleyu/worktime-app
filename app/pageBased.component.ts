@@ -48,7 +48,7 @@ export class PageBasedComponent {
   }
 
   refreshTable() {
-      this.searchInternal(this.searchTerm, this.currentPage, this.defaultPageSize);
+    this.searchInternal(this.searchTerm, this.currentPage, this.defaultPageSize);
   }
 
   exportTable() {
