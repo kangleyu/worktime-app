@@ -27,8 +27,9 @@ export class PaginatedTableComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    if(this.busy) {
-      this.elementRef.nativeElement.innerHTML = `<div class="spinner-container"><div class="spinner"><p><i class="fa fa-refresh fa-spin"></i></p></div></div>`;
+    // if(this.busy) {
+    if(false) { // disable busy state temporary, becaus it will break the refresh for some time.
+      // this.elementRef.nativeElement.innerHTML = `<div class="spinner-container"><div class="spinner"><p><i class="fa fa-refresh fa-spin"></i></p></div></div>`;
     } else if(!this.hasData) {
       this.elementRef.nativeElement.innerHTML = `<div class="empty-table"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 非常抱歉，没有找到任何数据！</div>`;
     } else {
@@ -47,6 +48,7 @@ export class PaginatedTableComponent implements OnChanges {
           "\">" + ele.substr(separatorIndex + 1) +
           "</th>";
         });
+        inner += "<th></th><th></th>";
         inner += "<tbody>";
         this.items.forEach((data) => {
           inner += "<tr>";
@@ -62,6 +64,11 @@ export class PaginatedTableComponent implements OnChanges {
               inner += "<td>" + data[fieldName] + "</td>";
             }
           });
+          inner += `<td><button class="btn btn-xs btn-info cell-btn">
+          <span class="glyphicon glyphicon-edit"></span>
+        </button></td><td><button class="btn btn-xs btn-danger cell-btn">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button></td>`;
           inner +="</tr>";
         });
         inner += "</tbody>";
