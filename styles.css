@@ -125,3 +125,22 @@ input[type="text"].text-search:-ms-input-placeholder  {
   font-style: italic;
   color: #7f8c8d;
 }
+
+/* spinner */
+.spinner-container {
+  position: relative;
+  height: 14rem;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 20px;
+  color: #ABB7B7;
+}
+
+.spinner p {
+  text-align: center;
+}

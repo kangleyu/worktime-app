@@ -8,3 +8,16 @@
   color: #ABB7B7;
   font-style: italic;
 }
+
+.spinner-container {
+  position: relative;
+  height: 14rem;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 20px;
+}

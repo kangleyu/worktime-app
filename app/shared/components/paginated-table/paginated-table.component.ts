@@ -28,7 +28,7 @@ export class PaginatedTableComponent implements OnChanges {
 
   ngOnChanges() {
     if(this.busy) {
-      this.elementRef.nativeElement.innerHTML = "Loading... ...";
+      this.elementRef.nativeElement.innerHTML = `<div class="spinner-container"><div class="spinner"><p><i class="fa fa-refresh fa-spin"></i></p></div></div>`;
     } else if(!this.hasData) {
       this.elementRef.nativeElement.innerHTML = `<div class="empty-table"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 非常抱歉，没有找到任何数据！</div>`;
     } else {
