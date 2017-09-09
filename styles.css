@@ -58,6 +58,16 @@ form .form-control,
   color: #fff;
 }
 
+.empty-table {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;  
+  font-size: 12px;
+  color: #ABB7B7;
+  font-style: italic;
+}
+
 /* top acation area of table */
 .table-action-area, 
 .table-search-area {

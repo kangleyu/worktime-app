@@ -30,7 +30,7 @@ export class PaginatedTableComponent implements OnChanges {
     if(this.busy) {
       this.elementRef.nativeElement.innerHTML = "Loading... ...";
     } else if(!this.hasData) {
-      this.elementRef.nativeElement.innerHTML = "No Data!";
+      this.elementRef.nativeElement.innerHTML = `<div class="empty-table"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 非常抱歉，没有找到任何数据！</div>`;
     } else {
       const time = new Date();
       this.tableMessage = "数据更新于 " + time.toLocaleTimeString();
