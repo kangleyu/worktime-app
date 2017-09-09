@@ -4,38 +4,33 @@
       <div class="form-group" [ngClass]="{'error': newEmpForm.controls.name?.invalid && newEmpForm.controls.name?.touched}">
         <em *ngIf="newEmpForm.controls.name?.invalid && (newEmpForm.controls.name?.touched)">＊姓名必需填＊</em>
         <input type="text" class="form-control" [(ngModel)]="employee.name" name="name" id="name" placeholder="姓名" required>
-        <div class="help-block with-errors"></div>
       </div>
       <div class="form-group" [ngClass]="{'error': newEmpForm.controls.phone?.invalid && newEmpForm.controls.phone?.touched}">
         <em *ngIf="newEmpForm.controls.phone?.invalid && newEmpForm.controls.phone?.touched && newEmpForm.controls.phone?.errors.required">＊联系电话必需填＊</em>
         <em *ngIf="newEmpForm.controls.phone?.invalid && newEmpForm.controls.phone?.touched && newEmpForm.controls.phone?.errors.pattern">＊电话号码格式不对＊</em> 
         <input type="text" class="form-control" [(ngModel)]="employee.phone" name="phone" id="phone" placeholder="联系电话" required pattern="^1[34578]\d{9}$">
-        <div class="help-block with-errors"></div>
       </div>
       <div class="form-group">
         <input type="text" class="form-control" [(ngModel)]="employee.email" name="email" id="email" placeholder="电子邮箱">
-        <div class="help-block with-errors"></div>
       </div>
       <div class="form-group">
         <input type="text" class="form-control" [(ngModel)]="employee.age" name="age" id="age" placeholder="年龄">
-        <div class="help-block with-errors"></div>
       </div>
       <div class="form-group">
         <select class="form-control" [(ngModel)]="employee.gender" name="gender" id="gender">
+          <option value="女">女</option>   
           <option value="男" selected="selected">男</option>
-          <option value="女">女</option>
         </select>
       </div>
       <div class="form-group" [ngClass]="{'error': newEmpForm.controls.idCard?.invalid && newEmpForm.controls.idCard?.touched}">
         <em *ngIf="newEmpForm.controls.idCard?.invalid && newEmpForm.controls.idCard?.touched && newEmpForm.controls.idCard?.errors.required">＊身份证号必需填＊</em>
         <em *ngIf="newEmpForm.controls.idCard?.invalid && newEmpForm.controls.idCard?.touched && newEmpForm.controls.idCard?.errors.pattern">＊身份证号格式不对＊</em>         
         <input type="text" class="form-control" [(ngModel)]="employee.idCard" name="idCard" id="idCard" placeholder="身份证号" required pattern="^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$">
-        <div class="help-block with-errors"></div>
       </div>
     </section>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">{{dismissActionName}}</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="dismissed()">{{dismissActionName}}</button>
     <button type="submit" [disabled]="!newEmpForm.valid" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
   </div>
 </form>

@@ -1,12 +1,13 @@
 <form autocomplete="off" #newWorktypeForm="ngForm" (ngSubmit)="saveItem(newWorktypeForm.value)">
   <div class="modal-body">
     <section>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': newWorktypeForm.controls.worktype?.invalid && newWorktypeForm.controls.worktype?.touched}">
+        <em *ngIf="newWorktypeForm.controls.worktype?.invalid && (newWorktypeForm.controls.worktype?.touched)">＊工种必需填＊</em>          
         <input type="text" class="form-control" [(ngModel)]="worktype.worktype" name="worktype" placeholder="工种" data-error="工种不能为空" required>
-        <div class="help-block with-errors"></div>
       </div>
-      <div class="form-group">
-          <select class="form-control" [(ngModel)]="worktype.lead" name="lead" data-error="负责人不能为空" required>
+      <div class="form-group" [ngClass]="{'error': newWorktypeForm.controls.lead?.invalid && newWorktypeForm.controls.lead?.touched}">
+          <em *ngIf="newWorktypeForm.controls.lead?.invalid && (newWorktypeForm.controls.lead?.touched)">＊负责人不能为空＊</em>                    
+          <select class="form-control" [(ngModel)]="worktype.lead" name="lead" required>
             <option value="" selected="selected">--负责人--</option>
             <option [ngValue]="emp" *ngFor="let emp of emps">{{emp}}</option>
           </select>
@@ -14,7 +15,7 @@
     </section>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">{{dismissActionName}}</button>
-    <button type="submit" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="dismissed()">{{dismissActionName}}</button>
+    <button type="submit" [disabled]="!newWorktypeForm.valid" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
   </div>
 </form>

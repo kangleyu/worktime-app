@@ -4,9 +4,10 @@ import {
   Input,
   Output,
   EventEmitter,
-  Inject
+  Inject,
+  ViewChild
 } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators, NgForm } from "@angular/forms";
 import {
   IProject,
   IEmployee,
@@ -33,6 +34,8 @@ export class BaseEditor {
   @Input() commitActionName: string = "保存";
   @Output() submitAction = new EventEmitter<IProject>();
 
+  public editorFrom: NgForm;
+
   constructor(@Inject(JQ_TOKEN) public jquery: any) {
   }
 
@@ -42,6 +45,12 @@ export class BaseEditor {
 
   submitted() {
      this.jquery('#createNewModal').modal('hide');
+  }
+
+  dismissed() {
+    if (this.editorFrom !== undefined) {
+      this.editorFrom.reset();
+    }
   }
 }
 
@@ -55,6 +64,8 @@ export class ProjectEditorComponent extends BaseEditor implements OnInit {
   @Input() project: IProject;
   @Input() managers: string[];
 
+  @ViewChild('newProjectForm') public newProjectForm: NgForm;
+
   constructor(private service: ProjectService, @Inject(JQ_TOKEN) public jquery: any) {
     super(jquery);
   }
@@ -67,6 +78,7 @@ export class ProjectEditorComponent extends BaseEditor implements OnInit {
       manager: "",
       state: "1"
     };
+    this.editorFrom = this.newProjectForm;
   }
 }
 
@@ -78,6 +90,8 @@ export class ProjectEditorComponent extends BaseEditor implements OnInit {
 })
 export class EmployeeEditorComponent extends BaseEditor implements OnInit {
   @Input() employee: IEmployee;
+
+  @ViewChild('newEmpForm') public newEmpForm: NgForm;
 
   constructor(@Inject(JQ_TOKEN) public jquery: any) {
     super(jquery);
@@ -93,6 +107,7 @@ export class EmployeeEditorComponent extends BaseEditor implements OnInit {
       gender: "",
       idCard: "",
     };
+    this.editorFrom = this.newEmpForm;
   }
 }
 
@@ -107,6 +122,8 @@ export class PaymentEditorComponent extends BaseEditor implements OnInit {
   @Input() emps: string[];
   @Input() projects: string[];
   @Input() worktypes: string[];
+
+  @ViewChild('newPaymentForm') public newPaymentForm: NgForm;
 
   constructor(private service: EmployeeService, @Inject(JQ_TOKEN) public jquery: any) {
     super(jquery);
@@ -123,6 +140,7 @@ export class PaymentEditorComponent extends BaseEditor implements OnInit {
       isUpperHalf: true,
       paid: 0
     };
+    this.editorFrom = this.newPaymentForm;
   }
 }
 
@@ -136,6 +154,8 @@ export class WorktypeEditorComponent extends BaseEditor implements OnInit {
   @Input() worktype: IWorktype;
   @Input() emps: string[];
 
+  @ViewChild('newWorktypeForm') public newWorktypeForm: NgForm;
+
   constructor(private service: EmployeeService, @Inject(JQ_TOKEN) public jquery: any) {
     super(jquery);
   }
@@ -146,6 +166,7 @@ export class WorktypeEditorComponent extends BaseEditor implements OnInit {
       worktype: "",
       lead: ""
     };
+    this.editorFrom = this.newWorktypeForm;
   }
 }
 
@@ -160,6 +181,8 @@ export class WorkimetEditorComponent extends BaseEditor implements OnInit {
   @Input() emps: string[];
   @Input() projects: string[];
   @Input() worktypes: string[];
+
+  @ViewChild('newWorktimeForm') public newWorktimeForm: NgForm;
 
   constructor(
     private worktimeService: WorktimeService,
@@ -177,5 +200,6 @@ export class WorkimetEditorComponent extends BaseEditor implements OnInit {
       month: 1,
       worktime: 0
     };
+    this.editorFrom = this.newWorktimeForm;
   }
 }

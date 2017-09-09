@@ -34,17 +34,6 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       const index = params['pageIndex'];
       this.searchInternal(this.searchTerm, this.currentPage, this.defaultPageSize);
-      // this.employeeService.getItems(this.searchTerm, 1, this.defaultPageSize).subscribe((employee) => {
-      //   this.employee = employee;
-      // });
-      // this.employeeService.getTotalCount().subscribe((count) => {
-      //   this.total = count;
-      //   const tPages = Math.ceil(count/this.defaultPageSize);
-      //   this.totalPages = tPages;
-      //   for(let i = 1; i <= tPages; i++) {
-      //     this.pages.push(i);
-      //   }
-      // });
     });
   }
 
@@ -79,7 +68,7 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
       email: "",
       phone: "",
       age: 0,
-      gender: "",
+      gender: "男",
       idCard: "",
     };
   }
@@ -87,6 +76,7 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
   creating(employee) {
     this.employeeService.save(employee).subscribe((e) => {
       this.toastr.info("新员工保存成功！");
+      this.refreshTable();
     }, (err) => {
       this.toastr.error("新建员工失败！");
     });

@@ -1,12 +1,13 @@
 <form autocomplete="off" #newProjectForm="ngForm" (ngSubmit)="saveItem(newProjectForm.value)">
   <div class="modal-body">
     <section>
-      <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="project.name" name="name" id="name" placeholder="项目名称">
-        <div class="help-block with-errors"></div>
+      <div class="form-group" [ngClass]="{'error': newProjectForm.controls.name?.invalid && newProjectForm.controls.name?.touched}">
+        <em *ngIf="newProjectForm.controls.name?.invalid && newProjectForm.controls.name?.touched && newProjectForm.controls.name?.errors.required">＊项目名称必需填＊</em>          
+        <input type="text" class="form-control" [(ngModel)]="project.name" name="name" id="name" placeholder="项目名称" required>
       </div>
-      <div class="form-group">
-        <select class="form-control" [(ngModel)]="project.manager" name="manager" id="manager">
+      <div class="form-group" [ngClass]="{'error': newProjectForm.controls.manager?.invalid && newProjectForm.controls.manager?.touched}">
+        <em *ngIf="newProjectForm.controls.manager?.invalid && newProjectForm.controls.manager?.touched && newProjectForm.controls.manager?.errors.required">＊负责人必需填＊</em>          
+        <select class="form-control" [(ngModel)]="project.manager" name="manager" id="manager" required>
           <option value="" selected="selected">--负责人--</option>
           <option [ngValue]="mgr" *ngFor="let mgr of managers">{{mgr}}</option>
         </select>
@@ -15,7 +16,8 @@
         <input type="text" class="form-control" [(ngModel)]="project.address" name="address" id="address" placeholder="工地">
         <div class="help-block with-errors"></div>
       </div>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': newProjectForm.controls.state?.invalid && newProjectForm.controls.state?.touched}">
+        <em *ngIf="newProjectForm.controls.state?.invalid && newProjectForm.controls.state?.touched && newProjectForm.controls.state?.errors.required">＊请选择项目状态＊</em>                    
         <select class="form-control" [(ngModel)]="project.state" name="state" id="state">
           <option value="">--请选择项目状态--</option>
           <option value="1">未开工</option>
@@ -26,7 +28,7 @@
     </section>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">{{dismissActionName}}</button>
-    <button type="submit" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="dismissed()">{{dismissActionName}}</button>
+    <button type="submit" [disabled]="!newProjectForm.valid" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
   </div>
 </form>

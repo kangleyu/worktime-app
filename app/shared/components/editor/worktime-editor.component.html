@@ -1,25 +1,29 @@
 <form autocomplete="off" #newWorktimeForm="ngForm" (ngSubmit)="saveItem(newWorktimeForm.value)">
   <div class="modal-body">
     <section>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': newWorktimeForm.controls.employee?.invalid && newWorktimeForm.controls.employee?.touched}">
+        <em *ngIf="newWorktimeForm.controls.employee?.invalid && (newWorktimeForm.controls.employee?.touched)">＊员工不能为空＊</em>
         <select class="form-control" [(ngModel)]="worktime.employee" name="employee" data-error="员工不能为空" required>
           <option value="" selected="selected">--姓名--</option>
           <option [ngValue]="emp" *ngFor="let emp of emps">{{emp}}</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': newWorktimeForm.controls.project?.invalid && newWorktimeForm.controls.project?.touched}">
+        <em *ngIf="newWorktimeForm.controls.project?.invalid && (newWorktimeForm.controls.project?.touched)">＊项目必需填＊</em>         
         <select class="form-control" [(ngModel)]="worktime.project" name="project" data-error="请选择项目" required>
           <option value="" selected="selected">--请选择项目--</option>
           <option [ngValue]="project" *ngFor="let project of projects">{{project}}</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': newWorktimeForm.controls.worktype?.invalid && newWorktimeForm.controls.worktype?.touched}">
+        <em *ngIf="newWorktimeForm.controls.worktype?.invalid && (newWorktimeForm.controls.worktype?.touched)">＊工种必需填＊</em>                              
         <select class="form-control" [(ngModel)]="worktime.worktype" name="worktype" data-error="请选择工种" required>
           <option value="" selected="selected">--请选择工种--</option>
           <option [ngValue]="worktype" *ngFor="let worktype of worktypes">{{worktype}}</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': newWorktimeForm.controls.year?.invalid && newWorktimeForm.controls.year?.touched}">
+        <em *ngIf="newWorktimeForm.controls.year?.invalid && (newWorktimeForm.controls.year?.touched)">＊年份必需填＊</em>                              
         <select class="form-control" [(ngModel)]="worktime.year" name="year" data-error="请选择年份" required>
           <option value="">--请选择年份--</option>
           <option value="2015">2015年</option>
@@ -33,7 +37,8 @@
           <option value="2023">2023年</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': newWorktimeForm.controls.month?.invalid && newWorktimeForm.controls.month?.touched}">
+        <em *ngIf="newWorktimeForm.controls.month?.invalid && (newWorktimeForm.controls.month?.touched)">＊月份必需填＊</em>                              
         <select class="form-control" [(ngModel)]="worktime.month" name="month" data-error="请选择年份" required>
           <option value="">--请选择月份--</option>
           <option value="1">1月</option>
@@ -50,13 +55,15 @@
           <option value="12">12月</option>
         </select>
       </div>
-      <div class="form-group">
-        <input class="form-control" type="text" name="worktime" placeholder="工时" [(ngModel)]="worktime.worktime" pattern="^[.0-9]{1,}$" data-error="工时必须为数字"  required>
+      <div class="form-group" [ngClass]="{'error': newWorktimeForm.controls.worktime?.invalid && newWorktimeForm.controls.worktime?.touched}">
+          <em *ngIf="newWorktimeForm.controls.worktime?.invalid && newWorktimeForm.controls.worktime?.touched && newWorktimeForm.controls.worktime?.errors.required">＊工时必需填＊</em>
+          <em *ngIf="newWorktimeForm.controls.worktime?.invalid && newWorktimeForm.controls.worktime?.touched && newWorktimeForm.controls.worktime?.errors.pattern">＊请填入有效数字＊</em>           
+          <input class="form-control" type="text" name="worktime" placeholder="工时" [(ngModel)]="worktime.worktime" pattern="^[.0-9]{1,}$" required>
       </div>
     </section>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">{{dismissActionName}}</button>
-    <button type="submit" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="dismissed()">{{dismissActionName}}</button>
+    <button type="submit" [disabled]="!newWorktimeForm.valid" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
   </div>
 </form>
