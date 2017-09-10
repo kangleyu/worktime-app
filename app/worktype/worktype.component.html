@@ -19,6 +19,6 @@
       </div>
     </table-toolbar>
   </div>
-  <paginated-table [items]="worktypes" [fields]="'worktype:工种|lead:负责人|createdAt:创建时间|updatedAt:更新时间'" [busy]="isBusy" [hasData]="!noData">
+  <paginated-table [items]="worktypes" [fields]="'worktype:工种|lead:负责人|createdAt:创建时间|updatedAt:更新时间' | parseFields" [busy]="isBusy" [hasData]="!noData">
   </paginated-table>
 </section>

@@ -1,0 +1,38 @@
+<div *ngIf="!hasData">
+  <div class="empty-table">
+    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 非常抱歉，没有找到任何数据！
+  </div>
+</div>
+<div *ngIf="hasData">
+  <table class="wt-table">
+    <tbody>
+      <tr>
+        <th *ngFor="let field of fields">{{field.text}}</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr *ngFor="let data of items">
+        <td *ngFor="let field of fields" [innerHtml]="data[field.name] | cellFormatter:field.name"></td>
+        <td>
+          <button class="btn btn-xs btn-info cell-btn">
+            <span class="glyphicon glyphicon-edit"></span>
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-xs btn-danger cell-btn">
+              <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td [colSpan]="fields.length">
+          <em>{{tableMessage}}</em>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

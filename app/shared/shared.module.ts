@@ -25,7 +25,9 @@ import {
   WorktypeEditorComponent,
   WorkimetEditorComponent,
   StatusPipe,
-  MonthPipe
+  MonthPipe,
+  ParseFieldsPipe,
+  CellFormatterPipe
 } from "./index";
 
 declare const toastr: Toastr;
@@ -40,7 +42,11 @@ declare const jQuery: any;
     EmployeeEditorComponent,
     PaymentEditorComponent,
     WorktypeEditorComponent,
-    WorkimetEditorComponent
+    WorkimetEditorComponent,
+    MonthPipe,
+    StatusPipe,
+    ParseFieldsPipe,
+    CellFormatterPipe
   ],
   imports: [
     CommonModule,
@@ -60,7 +66,8 @@ declare const jQuery: any;
     EmployeeEditorComponent,
     PaymentEditorComponent,
     WorktypeEditorComponent,
-    WorkimetEditorComponent
+    WorkimetEditorComponent,
+    ParseFieldsPipe
   ],
   providers: [
     { provide: TOASTR_TOKEN, useValue: toastr },

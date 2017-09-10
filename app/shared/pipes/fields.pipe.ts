@@ -8,7 +8,6 @@ export class ParseFieldsPipe implements PipeTransform {
   }
 
   transform(value: any, pattern?: string): any {
-    console.log("PARSING...");
     const ret = [];
     if (value !== undefined) {
       const fieldsList = value.split('|');
