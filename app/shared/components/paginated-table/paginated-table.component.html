@@ -16,12 +16,12 @@
       <tr *ngFor="let data of items">
         <td *ngFor="let field of fields" [innerHtml]="data[field.name] | cellFormatter:field.name"></td>
         <td>
-          <button class="btn btn-xs btn-info cell-btn" (click)="onEdit($event)">
+          <button class="btn btn-xs btn-info cell-btn" (click)="onEdit(data._id)">
             <span class="glyphicon glyphicon-edit"></span>
           </button>
         </td>
         <td>
-          <button class="btn btn-xs btn-danger cell-btn" (click)="onRemove($event)">
+          <button class="btn btn-xs btn-danger cell-btn" (click)="onRemove(data._id)">
               <span class="glyphicon glyphicon-remove"></span>
           </button>
         </td>
@@ -35,4 +35,22 @@
       </tr>
     </tfoot>
   </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" #removeConfiramtion id="removeConfirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">删除确认</h4>
+      </div>
+      <div class="modal-body">
+        <i class="fa fa-exclamation-triangle" style="padding-right:12px;font-size: 1.5em;color:#c0392b;" aria-hidden="true"></i>  删除操作是不可撤销的，你确定删除这条记录吗？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="ok()">确认</button>
+      </div>
+    </div>
+  </div>
 </div>

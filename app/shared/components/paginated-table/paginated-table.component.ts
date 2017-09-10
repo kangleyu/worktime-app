@@ -9,6 +9,9 @@ import {
 } from '@angular/core';
 import { DatePipe } from "@angular/common";
 import { StatusPipe, MonthPipe } from "../../index";
+import {
+  JQ_TOKEN
+} from '../../../shared/index';
 
 @Component({
   selector: 'paginated-table',
@@ -25,18 +28,27 @@ export class PaginatedTableComponent implements OnChanges {
 
   statusPipe = new StatusPipe();
   monthPipe = new MonthPipe();
+  toRemove: string;
 
   tableMessage: string = "数据更新于2017年10月1日 11:25PM";
 
-  constructor(private elementRef: ElementRef, private datePipe: DatePipe) {
+  constructor(
+    private elementRef: ElementRef,
+    private datePipe: DatePipe,
+    @Inject(JQ_TOKEN) public jquery: any) {
   }
 
-  onEdit() {
-    this.edit.emit();
+  onEdit(args) {
+    this.edit.emit(args);
   }
 
-  onRemove() {
-    this.remove.emit();
+  onRemove(args) {
+    this.jquery('#removeConfirmation').modal('show');
+    this.toRemove = args;
+  }
+
+  ok() {
+    this.remove.emit(this.toRemove);
   }
 
   ngOnChanges() {

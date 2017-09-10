@@ -3,7 +3,8 @@ import {
 } from '@angular/core';
 import {
   Toastr,
-  TOASTR_TOKEN
+  TOASTR_TOKEN,
+  JQ_TOKEN
 } from './shared/index';
 
 export class PageBasedComponent {
@@ -17,7 +18,9 @@ export class PageBasedComponent {
 
   public defaultPageSize: number = 12;
 
-  constructor(@Inject(TOASTR_TOKEN) public toastr: Toastr) {
+  constructor(
+    @Inject(TOASTR_TOKEN) public toastr: Toastr,
+    @Inject(JQ_TOKEN) public jquery: any) {
     this.currentPage = 1;
   }
 
@@ -56,10 +59,9 @@ export class PageBasedComponent {
   }
 
   editItem(args) {
-    this.toastr.info("Editing Item");
+    this.jquery('#createNewModal').modal('show');
   }
 
   removeItem(args) {
-    this.toastr.info("Removing Item");
   }
 }

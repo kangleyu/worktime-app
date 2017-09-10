@@ -9,6 +9,7 @@ import { IWorktype, IEmployee } from '../shared/models/index';
 import {
   Toastr,
   TOASTR_TOKEN,
+  JQ_TOKEN,
   WorktypeService,
   EmployeeService
 } from '../shared/index';
@@ -28,8 +29,9 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
     private employeeService: EmployeeService,
     private titleService: Title,
     private activatedRoute: ActivatedRoute,
-    @Inject(TOASTR_TOKEN) private toastr: Toastr) {
-      super(toastr);
+    @Inject(TOASTR_TOKEN) toastr: Toastr,
+    @Inject(JQ_TOKEN) public jquery: any) {
+      super(toastr, jquery);
   }
 
   ngOnInit() {
@@ -89,5 +91,16 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
 
   exportTable() {
     this.toastr.info('export table');
+  }
+
+  removeItem(args) {
+    if (args !== undefined) {
+      this.worktypeService.remove(args).subscribe((response) => {
+        this.toastr.warning("删除记录成功！");
+        this.refreshTable();
+      }, (error) => {
+        this.toastr.error("删除记录失败，请刷新页面检查是否数据已被删除！");
+      });
+    }
   }
 }

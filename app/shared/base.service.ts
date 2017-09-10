@@ -59,6 +59,14 @@ export class BaseService<T> {
     .catch(this.handleError);
   }
 
+  public remove(id: string): Observable<string> {
+    return this.http.delete(this.indexUrl + "/" + id)
+    .map((response: Response) => {
+      return response.json();
+    })
+    .catch(this.handleError);
+  }
+
   private handleError(error: Response) {
     return Observable.throw(error._body);
   }
