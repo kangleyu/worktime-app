@@ -16,12 +16,12 @@
       <tr *ngFor="let data of items">
         <td *ngFor="let field of fields" [innerHtml]="data[field.name] | cellFormatter:field.name"></td>
         <td>
-          <button class="btn btn-xs btn-info cell-btn">
+          <button class="btn btn-xs btn-info cell-btn" (click)="onEdit($event)">
             <span class="glyphicon glyphicon-edit"></span>
           </button>
         </td>
         <td>
-          <button class="btn btn-xs btn-danger cell-btn">
+          <button class="btn btn-xs btn-danger cell-btn" (click)="onRemove($event)">
               <span class="glyphicon glyphicon-remove"></span>
           </button>
         </td>

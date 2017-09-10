@@ -17,7 +17,7 @@ export class PageBasedComponent {
 
   public defaultPageSize: number = 12;
 
-  constructor(@Inject(TOASTR_TOKEN) toastr: Toastr) {
+  constructor(@Inject(TOASTR_TOKEN) public toastr: Toastr) {
     this.currentPage = 1;
   }
 
@@ -52,5 +52,14 @@ export class PageBasedComponent {
   }
 
   exportTable() {
+    this.toastr.info("Export Table");
+  }
+
+  editItem(args) {
+    this.toastr.info("Editing Item");
+  }
+
+  removeItem(args) {
+    this.toastr.info("Removing Item");
   }
 }

@@ -3,7 +3,9 @@ import {
   Inject,
   OnChanges,
   Input,
-  ElementRef
+  Output,
+  ElementRef,
+  EventEmitter
 } from '@angular/core';
 import { DatePipe } from "@angular/common";
 import { StatusPipe, MonthPipe } from "../../index";
@@ -18,12 +20,23 @@ export class PaginatedTableComponent implements OnChanges {
   @Input() fields: any;
   @Input() busy: boolean;
   @Input() hasData: boolean;
+  @Output() edit = new EventEmitter();
+  @Output() remove = new EventEmitter();
+
   statusPipe = new StatusPipe();
   monthPipe = new MonthPipe();
 
   tableMessage: string = "数据更新于2017年10月1日 11:25PM";
 
   constructor(private elementRef: ElementRef, private datePipe: DatePipe) {
+  }
+
+  onEdit() {
+    this.edit.emit();
+  }
+
+  onRemove() {
+    this.remove.emit();
   }
 
   ngOnChanges() {
