@@ -120,4 +120,9 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
       });
     }
   }
+
+  editItem(args) {
+    this.currentPayment = args;
+    super.editItem(args);
+  }
 }

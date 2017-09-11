@@ -47,11 +47,11 @@ export class BaseEditor {
      this.jquery('#createNewModal').modal('hide');
   }
 
-  dismissed() {
-    if (this.editorFrom !== undefined) {
-      this.editorFrom.reset();
-    }
-  }
+  // dismissed() {
+  //   if (this.editorFrom !== undefined) {
+  //     this.editorFrom.reset();
+  //   }
+  // }
 }
 
 /** Project Editor Component */

@@ -103,4 +103,9 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
       });
     }
   }
+
+  editItem(args) {
+    this.currentWorktype = args;
+    super.editItem(args);
+  }
 }

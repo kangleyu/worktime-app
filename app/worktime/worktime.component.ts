@@ -119,4 +119,9 @@ export class WorktimeComponent extends PageBasedComponent implements OnInit {
       });
     }
   }
+
+  editItem(args) {
+    this.currentWorktime = args;
+    super.editItem(args);
+  }
 }

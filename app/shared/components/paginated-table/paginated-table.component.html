@@ -16,7 +16,7 @@
       <tr *ngFor="let data of items">
         <td *ngFor="let field of fields" [innerHtml]="data[field.name] | cellFormatter:field.name"></td>
         <td>
-          <button class="btn btn-xs btn-info cell-btn" (click)="onEdit(data._id)">
+          <button class="btn btn-xs btn-info cell-btn" (click)="onEdit(data)">
             <span class="glyphicon glyphicon-edit"></span>
           </button>
         </td>

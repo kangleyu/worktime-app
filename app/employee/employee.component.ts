@@ -97,4 +97,10 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
       });
     }
   }
+
+  editItem(args) {
+    this.currentEmployee = args;
+    console.log(this.currentEmployee);
+    super.editItem(args);
+  }
 }

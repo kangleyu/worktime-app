@@ -110,4 +110,9 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
       });
     }
   }
+
+  editItem(args) {
+    this.currentProject = args;
+    super.editItem(args);
+  }
 }

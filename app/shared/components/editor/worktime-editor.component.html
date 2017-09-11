@@ -63,7 +63,7 @@
     </section>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="dismissed()">{{dismissActionName}}</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">{{dismissActionName}}</button>
     <button type="submit" [disabled]="!newWorktimeForm.valid" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
   </div>
 </form>
