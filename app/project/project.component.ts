@@ -85,6 +85,7 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
       manager: "",
       state: "1"
     };
+    this.editMode = "new";
   }
 
   creating(project) {
@@ -113,6 +114,7 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
 
   editItem(args) {
     this.currentProject = args;
+    this.editMode = "update";
     super.editItem(args);
   }
 }

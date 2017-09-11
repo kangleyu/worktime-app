@@ -94,6 +94,7 @@ export class WorktimeComponent extends PageBasedComponent implements OnInit {
       month: 1,
       worktime: 0
     };
+    this.editMode = "new";
   }
 
   creating(worktime) {
@@ -122,6 +123,7 @@ export class WorktimeComponent extends PageBasedComponent implements OnInit {
 
   editItem(args) {
     this.currentWorktime = args;
+    this.editMode = "update";
     super.editItem(args);
   }
 }

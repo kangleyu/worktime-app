@@ -14,7 +14,7 @@
       (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
       <div addTemplate>
         <section>
-          <payment-editor [payment]="currentPayment" [emps]="emps" [projects]="projects" [worktypes]="worktypes" (submitAction)="creating($event)"></payment-editor>
+          <payment-editor [mode]="editMode" [payment]="currentPayment" [emps]="emps" [projects]="projects" [worktypes]="worktypes" (submitAction)="creating($event)"></payment-editor>
         </section>
       </div>
     </table-toolbar>
@@ -22,7 +22,9 @@
   <paginated-table 
     [items]="payments" 
     [fields]="'employee:员工姓名|project:项目|isUpperHalf:月旬|worktype:工种|year:年|month:月|paid:费用|createdAt:创建时间|updatedAt:更新时间' | parseFields"
-    [busy]="isBusy" 
+    [busy]="isBusy"
+    [pageIndex]="currentPage"
+    [totalPages]="totalPages"
     [hasData]="!noData"
     (edit)="editItem($event)"
     (remove)="removeItem($event)">

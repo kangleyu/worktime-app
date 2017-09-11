@@ -13,8 +13,9 @@ export class PageBasedComponent {
   public noData: boolean;
   public total: number;
   public totalPages: number;
-  public currentPage: number;
+  public currentPage: number = 1;
   public pages = [];
+  public editMode: string = "edit"; // default modal popup as edit mode
 
   public defaultPageSize: number = 12;
 

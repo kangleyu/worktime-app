@@ -32,6 +32,8 @@ import {
 export class BaseEditor {
   @Input() dismissActionName: string = "关闭";
   @Input() commitActionName: string = "保存";
+  @Input() updateActionName: string = "更新";
+  @Input() mode: string;
   @Output() submitAction = new EventEmitter<IProject>();
 
   public editorFrom: NgForm;

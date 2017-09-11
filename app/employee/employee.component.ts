@@ -76,15 +76,25 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
       gender: "男",
       idCard: "",
     };
+    this.editMode = "new";
   }
 
   creating(employee) {
-    this.employeeService.save(employee).subscribe((e) => {
-      this.toastr.info("新员工保存成功！");
-      this.refreshTable();
-    }, (err) => {
-      this.toastr.error("新建员工失败！");
-    });
+    switch (this.editMode) {
+      case "new":
+      {
+        this.employeeService.save(employee).subscribe((e) => {
+          this.toastr.info("新员工保存成功！");
+          this.refreshTable();
+        }, (err) => {
+          this.toastr.error("新建员工失败！");
+        });
+      }
+      case "update":
+      {
+        this.toastr.info("UPDATING ITEM");
+      }
+    }
   }
 
   removeItem(args) {
@@ -100,7 +110,7 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
 
   editItem(args) {
     this.currentEmployee = args;
-    console.log(this.currentEmployee);
+    this.editMode = "update";
     super.editItem(args);
   }
 }

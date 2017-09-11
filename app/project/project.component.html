@@ -13,7 +13,7 @@
     <table-toolbar (previous)="gotoPage($event)" (next)="gotoPage($event)" (goto)="gotoPage($event)" (create)="preCreate()"
       (refresh)="refreshTable()" (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
       <div addTemplate>
-        <project-editor [project]="currentProject" [managers]="managers" (submitAction)="creating($event)"></project-editor>
+        <project-editor [mode]="editMode" [project]="currentProject" [managers]="managers" (submitAction)="creating($event)"></project-editor>
       </div>
     </table-toolbar>
   </div>
@@ -22,6 +22,8 @@
     [fields]="'name:项目名称|manager:负责人|address:工地|state:项目状态|createdAt:创建时间|updatedAt:更新时间' | parseFields"
     [busy]="isBusy" 
     [hasData]="!noData"
+    [pageIndex]="currentPage"
+    [totalPages]="totalPages"
     (edit)="editItem($event)"
     (remove)="removeItem($event)">
   </paginated-table>

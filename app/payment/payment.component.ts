@@ -95,6 +95,7 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
       isUpperHalf: true,
       paid: 0
     };
+    this.editMode = "new";
   }
 
   creating(payment) {
@@ -123,6 +124,7 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
 
   editItem(args) {
     this.currentPayment = args;
+    this.editMode = "update";
     super.editItem(args);
   }
 }

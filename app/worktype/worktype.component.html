@@ -14,7 +14,7 @@
       (export)="exportTable()" [current]="currentPage" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
       <div addTemplate>
         <section>
-          <worktype-editor [worktype]="currentWorktype" [emps]="emps" (submitAction)="creating($event)"></worktype-editor>
+          <worktype-editor [mode]="editMode" [worktype]="currentWorktype" [emps]="emps" (submitAction)="creating($event)"></worktype-editor>
         </section>
       </div>
     </table-toolbar>
@@ -24,6 +24,8 @@
     [fields]="'worktype:工种|lead:负责人|createdAt:创建时间|updatedAt:更新时间' | parseFields" 
     [busy]="isBusy" 
     [hasData]="!noData"
+    [pageIndex]="currentPage"
+    [totalPages]="totalPages"
     (edit)="editItem($event)"
     (remove)="removeItem($event)">
   </paginated-table>

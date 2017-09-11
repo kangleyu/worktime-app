@@ -78,6 +78,7 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
       worktype: "",
       lead: ""
     };
+    this.editMode = "new";
   }
 
   creating(worktype) {
@@ -106,6 +107,7 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
 
   editItem(args) {
     this.currentWorktype = args;
+    this.editMode = "update";
     super.editItem(args);
   }
 }

@@ -31,6 +31,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">{{dismissActionName}}</button>
-    <button type="submit" [disabled]="!newEmpForm.valid" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
+    <button *ngIf="mode === 'new'" type="submit" [disabled]="!newEmpForm.valid" class="btn btn-primary" (click)="submitted()">{{commitActionName}}</button>
+    <button *ngIf="mode === 'update'" type="submit" [disabled]="!newEmpForm.valid" class="btn btn-warning" (click)="submitted()">{{updateActionName}}</button>
   </div>
 </form>
