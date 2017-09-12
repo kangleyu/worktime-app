@@ -59,6 +59,14 @@ export class BaseService<T> {
     .catch(this.handleError);
   }
 
+  public update(item: T): Observable<T> {
+    return this.http.patch(this.indexUrl + "/" + item.id, item)
+    .map((response: Response) => {
+      return response.json() as T;
+    })
+    .catch(this.handleError);
+  }
+
   public remove(id: string): Observable<string> {
     return this.http.delete(this.indexUrl + "/" + id)
     .map((response: Response) => {

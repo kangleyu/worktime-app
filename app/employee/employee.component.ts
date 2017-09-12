@@ -92,7 +92,12 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
       }
       case "update":
       {
-        this.toastr.info("UPDATING ITEM");
+        this.employeeService.update(employee).subscribe((e) => {
+          this.toastr.info("更新成功！");
+          this.refreshTable();
+        }, (err) => {
+          this.toastr.error("更新失败！");
+        });
       }
     }
   }

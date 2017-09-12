@@ -1,6 +1,7 @@
 <form autocomplete="off" #newEmpForm="ngForm" (ngSubmit)="saveItem(newEmpForm.value)">
   <div class="modal-body">
     <section>
+      <input type="hidden" name="id" id="id" [(ngModel)]="employee._id">
       <div class="form-group" [ngClass]="{'error': newEmpForm.controls.name?.invalid && newEmpForm.controls.name?.touched}">
         <em *ngIf="newEmpForm.controls.name?.invalid && (newEmpForm.controls.name?.touched)">＊姓名必需填＊</em>
         <input type="text" class="form-control" [(ngModel)]="employee.name" name="name" id="name" placeholder="姓名" required>
