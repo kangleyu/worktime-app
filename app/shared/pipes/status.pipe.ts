@@ -1,6 +1,5 @@
-import { Pipe, PipeTransform, Injectable } from "@angular/core";
+import { Pipe, PipeTransform } from "@angular/core";
 
-@Injectable()
 @Pipe({
   name: "status"
 })

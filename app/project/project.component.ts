@@ -89,12 +89,28 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
   }
 
   creating(project) {
-    this.projectService.save(project).subscribe((p) => {
-      this.toastr.info("新项目保存成功！");
-      this.refreshTable();
-    }, (err) => {
-      this.toastr.error("新建项目失败！");
-    });
+    switch (this.editMode) {
+      case "new":
+      {
+        this.projectService.save(project).subscribe((p) => {
+          this.toastr.info("新项目保存成功！");
+          this.refreshTable();
+        }, (err) => {
+          this.toastr.error("新建项目失败！");
+        });
+        break;
+      }
+      case "update":
+      {
+        this.projectService.update(project).subscribe((p) => {
+          this.toastr.info("更新成功！");
+          this.refreshTable();
+        }, (err) => {
+          this.toastr.error("更新失败！");
+        });
+        break;
+      }
+    }
   }
 
   exportTable() {

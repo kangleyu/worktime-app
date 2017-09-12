@@ -1,6 +1,7 @@
 <form autocomplete="off" #newWorktypeForm="ngForm" (ngSubmit)="saveItem(newWorktypeForm.value)">
   <div class="modal-body">
     <section>
+      <input type="hidden" name="id" id="id" [(ngModel)]="worktype._id">        
       <div class="form-group" [ngClass]="{'error': newWorktypeForm.controls.worktype?.invalid && newWorktypeForm.controls.worktype?.touched}">
         <em *ngIf="newWorktypeForm.controls.worktype?.invalid && (newWorktypeForm.controls.worktype?.touched)">＊工种必需填＊</em>          
         <input type="text" class="form-control" [(ngModel)]="worktype.worktype" name="worktype" placeholder="工种" data-error="工种不能为空" required>

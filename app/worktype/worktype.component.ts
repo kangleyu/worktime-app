@@ -82,12 +82,28 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
   }
 
   creating(worktype) {
-    this.worktypeService.save(worktype).subscribe((p) => {
-      this.toastr.info("新工种保存成功！");
-      this.refreshTable();
-    }, (err) => {
-      this.toastr.error("新建工种失败！");
-    });
+    switch (this.editMode) {
+      case "new":
+      {
+        this.worktypeService.save(worktype).subscribe((p) => {
+          this.toastr.info("新工种保存成功！");
+          this.refreshTable();
+        }, (err) => {
+          this.toastr.error("新建工种失败！");
+        });
+        break;
+      }
+      case "update":
+      {
+        this.worktypeService.update(worktype).subscribe((p) => {
+          this.toastr.info("更新成功！");
+          this.refreshTable();
+        }, (err) => {
+          this.toastr.error("更新失败！");
+        });
+        break;
+      }
+    }
   }
 
   exportTable() {

@@ -1,6 +1,7 @@
 <form autocomplete="off" #newPaymentForm="ngForm" (ngSubmit)="saveItem(newPaymentForm.value)">
   <div class="modal-body">
     <section>
+      <input type="hidden" name="id" id="id" [(ngModel)]="payment._id">
       <div class="form-group" [ngClass]="{'error': newPaymentForm.controls.employee?.invalid && newPaymentForm.controls.employee?.touched}">
         <em *ngIf="newPaymentForm.controls.employee?.invalid && (newPaymentForm.controls.employee?.touched)">＊员工不能为空＊</em>                    
         <select class="form-control" [(ngModel)]="payment.employee" name="employee" required>
@@ -67,6 +68,11 @@
         <em *ngIf="newPaymentForm.controls.paid?.invalid && newPaymentForm.controls.paid?.touched && newPaymentForm.controls.paid?.errors.pattern">＊请填入有效数字＊</em>           
         <input class="form-control" type="text" name="paid" placeholder="工时" [(ngModel)]="payment.paid" pattern="^[.0-9]{1,}$"
           required>
+      </div>
+      <div class="form-check" *ngIf="mode === 'update'">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" name="verified" [(ngModel)]="payment.verified"> 复核通过？
+        </label>
       </div>
     </section>
   </div>

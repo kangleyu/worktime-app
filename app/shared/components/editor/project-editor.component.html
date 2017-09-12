@@ -1,5 +1,6 @@
 <form autocomplete="off" #newProjectForm="ngForm" (ngSubmit)="saveItem(newProjectForm.value)">
   <div class="modal-body">
+    <input type="hidden" name="id" id="id" [(ngModel)]="project._id">      
     <section>
       <div class="form-group" [ngClass]="{'error': newProjectForm.controls.name?.invalid && newProjectForm.controls.name?.touched}">
         <em *ngIf="newProjectForm.controls.name?.invalid && newProjectForm.controls.name?.touched && newProjectForm.controls.name?.errors.required">＊项目名称必需填＊</em>          

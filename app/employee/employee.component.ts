@@ -89,6 +89,7 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
         }, (err) => {
           this.toastr.error("新建员工失败！");
         });
+        break;
       }
       case "update":
       {
@@ -98,10 +99,11 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
         }, (err) => {
           this.toastr.error("更新失败！");
         });
+        break;
       }
     }
   }
-
+  
   removeItem(args) {
     if (args !== undefined) {
       this.employeeService.remove(args).subscribe((response) => {

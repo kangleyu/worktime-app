@@ -92,18 +92,35 @@ export class WorktimeComponent extends PageBasedComponent implements OnInit {
       worktype: "",
       year: 2017,
       month: 1,
-      worktime: 0
+      worktime: 0,
+      verified: false
     };
     this.editMode = "new";
   }
 
   creating(worktime) {
-    this.worktimeService.save(worktime).subscribe((p) => {
-      this.toastr.info("新工时保存成功！");
-      this.refreshTable();
-    }, (err) => {
-      this.toastr.error("新建工时失败！");
-    });
+    switch (this.editMode) {
+     case "new":
+     {
+      this.worktimeService.save(worktime).subscribe((p) => {
+        this.toastr.info("新工时保存成功！");
+        this.refreshTable();
+      }, (err) => {
+        this.toastr.error("新建工时失败！");
+      });
+      break;
+     }
+     case "update":
+     {
+      this.worktimeService.update(worktime).subscribe((p) => {
+        this.toastr.info("更新成功！");
+        this.refreshTable();
+      }, (err) => {
+        this.toastr.error("更新失败！");
+      });
+      break;
+     }
+    }
   }
 
   exportTable() {

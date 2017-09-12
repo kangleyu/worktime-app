@@ -46,7 +46,8 @@ export class BaseEditor {
   }
 
   submitted() {
-     this.jquery('#createNewModal').modal('hide');
+    console.log("editor.submitted called");
+    this.jquery('#createNewModal').modal('hide');
   }
 
   // dismissed() {
@@ -140,7 +141,8 @@ export class PaymentEditorComponent extends BaseEditor implements OnInit {
       year: 2017,
       month: 1,
       isUpperHalf: true,
-      paid: 0
+      paid: 0,
+      verified: false
     };
     this.editorFrom = this.newPaymentForm;
   }
@@ -200,7 +202,8 @@ export class WorkimetEditorComponent extends BaseEditor implements OnInit {
       worktype: "",
       year: 2017,
       month: 1,
-      worktime: 0
+      worktime: 0,
+      verified: false
     };
     this.editorFrom = this.newWorktimeForm;
   }

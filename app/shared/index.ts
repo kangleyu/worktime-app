@@ -13,5 +13,6 @@ export * from "./components/editor/editors.component";
 
 export * from "./pipes/status.pipe";
 export * from "./pipes/month.pipe";
+export * from "./pipes/verifiedStatus.pipe";
 export * from "./pipes/fields.pipe";
 export * from "./pipes/cellFormatter.pipe";

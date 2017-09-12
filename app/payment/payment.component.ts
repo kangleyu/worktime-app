@@ -93,18 +93,35 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
       year: 2017,
       month: 1,
       isUpperHalf: true,
-      paid: 0
+      paid: 0,
+      verified: false
     };
     this.editMode = "new";
   }
 
   creating(payment) {
-    this.paymentService.save(payment).subscribe((p) => {
-      this.toastr.info("新费用保存成功！");
-      this.refreshTable();
-    }, (err) => {
-      this.toastr.error("新建费用失败！");
-    });
+    switch (this.editMode) {
+      case "new":
+      {
+        this.paymentService.save(payment).subscribe((p) => {
+          this.toastr.info("新费用保存成功！");
+          this.refreshTable();
+        }, (err) => {
+          this.toastr.error("新建费用失败！");
+        });
+        break;
+      }
+      case "update":
+      {
+        this.paymentService.update(payment).subscribe((p) => {
+          this.toastr.info("更新成功！");
+          this.refreshTable();
+        }, (err) => {
+          this.toastr.error("更新失败！");
+        });
+        break;
+      }
+    }
   }
 
   exportTable() {

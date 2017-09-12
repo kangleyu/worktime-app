@@ -6,7 +6,9 @@ import "rxjs/add/operator/timeout";
 import "rxjs/add/operator/throttleTime";
 import 'rxjs/add/observable/throw';
 
-export class BaseService<T> {
+import { IModel } from "./models/index";
+
+export class BaseService<T extends IModel> {
   constructor(
     public http: Http,
     public searchUrl: string,
@@ -76,6 +78,6 @@ export class BaseService<T> {
   }
 
   private handleError(error: Response) {
-    return Observable.throw(error._body);
+    return Observable.throw(error);
   }
 }

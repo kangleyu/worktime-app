@@ -8,7 +8,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import { DatePipe } from "@angular/common";
-import { StatusPipe, MonthPipe } from "../../index";
+// import { StatusPipe, MonthPipe } from "../../index";
 import {
   JQ_TOKEN
 } from '../../../shared/index';
@@ -28,8 +28,8 @@ export class PaginatedTableComponent implements OnChanges {
   @Output() edit = new EventEmitter();
   @Output() remove = new EventEmitter();
 
-  statusPipe = new StatusPipe();
-  monthPipe = new MonthPipe();
+  // statusPipe = new StatusPipe();
+  // monthPipe = new MonthPipe();
   toRemove: string;
 
   tableMessage: string = "数据更新于2017年10月1日 11:25PM";

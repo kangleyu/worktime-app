@@ -1,4 +1,6 @@
-export interface IPayment {
+import { IModel } from "./base.model";
+
+export class IPayment implements IModel {
   id: number;
   employee: string;
   project: string;
@@ -7,6 +9,7 @@ export interface IPayment {
   year: number;
   month: number;
   paid: number;
+  verified: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }

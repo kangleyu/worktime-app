@@ -1,4 +1,6 @@
-export interface IProject {
+import { IModel } from "./base.model";
+
+export class IProject implements IModel {
   id: number;
   name: string;
   address: string;

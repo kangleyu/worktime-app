@@ -1,4 +1,5 @@
-export interface IEmployee {
+import { IModel } from "./base.model";
+export class IEmployee implements IModel {
   id: number;
   name: string;
   phone: string;

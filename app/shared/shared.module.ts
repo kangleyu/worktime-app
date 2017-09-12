@@ -25,6 +25,7 @@ import {
   WorktypeEditorComponent,
   WorkimetEditorComponent,
   StatusPipe,
+  VerifiedStatusPipe,
   MonthPipe,
   ParseFieldsPipe,
   CellFormatterPipe
@@ -45,6 +46,7 @@ declare const jQuery: any;
     WorkimetEditorComponent,
     MonthPipe,
     StatusPipe,
+    VerifiedStatusPipe,
     ParseFieldsPipe,
     CellFormatterPipe
   ],
@@ -79,6 +81,7 @@ declare const jQuery: any;
     WorktypeService,
     DatePipe,
     StatusPipe,
+    VerifiedStatusPipe,
     MonthPipe
   ]
 })
