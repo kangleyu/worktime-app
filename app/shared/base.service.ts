@@ -62,6 +62,7 @@ export class BaseService<T extends IModel> {
   }
 
   public update(item: T): Observable<T> {
+    item.updatedAt = new Date(Date.now());
     return this.http.patch(this.indexUrl + "/" + item.id, item)
     .map((response: Response) => {
       return response.json() as T;
