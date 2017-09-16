@@ -24,6 +24,7 @@ import {
   PaymentEditorComponent,
   WorktypeEditorComponent,
   WorkimetEditorComponent,
+  AggPanelComponent,
   StatusPipe,
   VerifiedStatusPipe,
   MonthPipe,
@@ -36,6 +37,11 @@ declare const jQuery: any;
 
 @NgModule({
   declarations: [
+    MonthPipe,
+    StatusPipe,
+    VerifiedStatusPipe,
+    ParseFieldsPipe,
+    CellFormatterPipe,
     PaginatedTableComponent,
     TableToolbarComponent,
     ModalWindowComponent,
@@ -44,11 +50,7 @@ declare const jQuery: any;
     PaymentEditorComponent,
     WorktypeEditorComponent,
     WorkimetEditorComponent,
-    MonthPipe,
-    StatusPipe,
-    VerifiedStatusPipe,
-    ParseFieldsPipe,
-    CellFormatterPipe
+    AggPanelComponent
   ],
   imports: [
     CommonModule,
@@ -61,6 +63,7 @@ declare const jQuery: any;
     FormsModule,
     HttpModule,
     BrowserModule,
+    ParseFieldsPipe,
     PaginatedTableComponent,
     TableToolbarComponent,
     ModalWindowComponent,
@@ -69,7 +72,7 @@ declare const jQuery: any;
     PaymentEditorComponent,
     WorktypeEditorComponent,
     WorkimetEditorComponent,
-    ParseFieldsPipe
+    AggPanelComponent
   ],
   providers: [
     { provide: TOASTR_TOKEN, useValue: toastr },
@@ -82,7 +85,8 @@ declare const jQuery: any;
     DatePipe,
     StatusPipe,
     VerifiedStatusPipe,
-    MonthPipe
+    MonthPipe,
+    ParseFieldsPipe
   ]
 })
 export class SharedModule {

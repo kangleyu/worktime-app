@@ -46,7 +46,6 @@ export class BaseEditor {
   }
 
   submitted() {
-    console.log("editor.submitted called");
     this.jquery('#createNewModal').modal('hide');
   }
 

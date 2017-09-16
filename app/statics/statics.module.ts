@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
-
 import { StaticsComponent } from './statics.component';
 
 const staticsRoutes: Routes = [
@@ -22,7 +21,8 @@ const staticsRoutes: Routes = [
   ],
   imports:[
     RouterModule.forChild(staticsRoutes),
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     StaticsComponent

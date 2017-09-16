@@ -15,7 +15,7 @@ export class ParseFieldsPipe implements PipeTransform {
         const separatorIndex = ele.indexOf(':');
         const field = ele.substr(0, separatorIndex);
         const display = ele.substr(separatorIndex + 1);
-        ret.push({ name: field, text: display });
+        ret.push({ name: field, text: display, isSelected: false });
       });
     }
     return ret;

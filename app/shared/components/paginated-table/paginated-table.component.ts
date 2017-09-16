@@ -28,8 +28,6 @@ export class PaginatedTableComponent implements OnChanges {
   @Output() edit = new EventEmitter();
   @Output() remove = new EventEmitter();
 
-  // statusPipe = new StatusPipe();
-  // monthPipe = new MonthPipe();
   toRemove: string;
 
   tableMessage: string = "数据更新于2017年10月1日 11:25PM";

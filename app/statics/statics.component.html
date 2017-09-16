@@ -1,15 +1,41 @@
-<h1>STATICS</h1>
-<div>
-  <ul>
-    <li>Worktime based on time/project/people</li>
-    <li>Worktime based on people/project</li>
-    <li>Worktime based on project</li>
-    <li>Worktime based on worktype/people/project</li>
-    <li>Payment based on time/project/people</li>
-    <li>Payment based on people/project</li>
-    <li>Payment based on project</li>
-    <li>Payment based on worktype/people/project</li>
-    <li>Export excel files</li>
-    <li>Send report in mail</li>
-  </ul>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-worktime">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <p class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <span class="glyphicon glyphicon-chevron-right"></span>  
+           项目工时统计
+        </a>
+      </p>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <div>
+          <agg-panel 
+            [params]="'project:项目|employee:员工|worktype:工种|year:年份|month:月份' | parseFields"
+            (selectedParamsChanged)="aggregateWorktimes($event)"></agg-panel>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-worktime">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <p class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+          aria-controls="collapseTwo">
+          <span class="glyphicon glyphicon-chevron-right"></span>  
+           领取费用统计
+        </a>
+      </p>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <div>
+          <agg-panel 
+            [params]="'project:项目|employee:员工|worktype:工种|year:年份|month:月份' | parseFields"
+            (selectedParamsChanged)="aggregatePayments($event)"></agg-panel>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

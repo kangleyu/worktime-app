@@ -103,7 +103,7 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
       }
     }
   }
-  
+
   removeItem(args) {
     if (args !== undefined) {
       this.employeeService.remove(args).subscribe((response) => {

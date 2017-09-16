@@ -1,0 +1,36 @@
+.panel-worktime {
+  /* border: 1px solid #3498db; */
+  border: none;
+  border-radius: 0;
+}
+
+.panel-worktime .panel-heading,
+.panel-worktime .panel {
+  border-radius: 0;
+  border-color: #3498db;
+}
+
+.panel-worktime .panel-heading {
+  background-color: #3498db;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.panel-worktime .panel-body {
+  border-top-color: #3498db
+}
+
+.panel-title a {
+  text-decoration: none;
+}
+
+.panel-title a:hover {
+  color: #2c3e50;
+}
+
+p.panel-title {
+  font-size: 13px;
+}
+
+
+
