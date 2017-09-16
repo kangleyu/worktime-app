@@ -124,10 +124,6 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
     }
   }
 
-  exportTable() {
-    this.toastr.info('export table');
-  }
-
   removeItem(args) {
     if (args !== undefined) {
       this.paymentService.remove(args).subscribe((response) => {

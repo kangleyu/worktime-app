@@ -106,10 +106,6 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
     }
   }
 
-  exportTable() {
-    this.toastr.info('export table');
-  }
-
   removeItem(args) {
     if (args !== undefined) {
       this.worktypeService.remove(args).subscribe((response) => {

@@ -123,10 +123,6 @@ export class WorktimeComponent extends PageBasedComponent implements OnInit {
     }
   }
 
-  exportTable() {
-    this.toastr.info('export table');
-  }
-
   removeItem(args) {
     if (args !== undefined) {
       this.worktimeService.remove(args).subscribe((response) => {

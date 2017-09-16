@@ -56,7 +56,7 @@ export class PageBasedComponent {
   }
 
   exportTable() {
-    this.toastr.info("Export Table");
+    this.toastr.error("此功能还没有完成!!!");
   }
 
   editItem(args) {

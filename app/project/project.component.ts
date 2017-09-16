@@ -113,10 +113,6 @@ export class ProjectComponent extends PageBasedComponent implements OnInit {
     }
   }
 
-  exportTable() {
-    this.toastr.info('export table');
-  }
-
   removeItem(args) {
     if (args !== undefined) {
       this.projectService.remove(args).subscribe((response) => {
