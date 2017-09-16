@@ -3,5 +3,7 @@
     class="btn" 
     [ngClass]="{'btn-info': param.isSelected, 'btn-default': !param.isSelected}"
     (click)="toggle(param)"
-    *ngFor="let param of params">{{param.text}}</button>
+    *ngFor="let param of params">
+    <span class="badge badge-default badge-wt">{{param.order}}</span> {{param.text}}
+  </button>
 </div>

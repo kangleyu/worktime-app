@@ -29,10 +29,15 @@ export class AggPanelComponent implements OnInit, OnChanges {
 
   get selectedFields(): [string] {
     if (this.params !== undefined) {
+      let startIndex = 1;
       return this.params
                 .filter((p) => p.isSelected !== undefined && p.isSelected)
                 .sort((p1, p2) => p1.toggledTime.getTime() - p2.toggledTime.getTime())
-                .map((p) => p.name);
+                .map((p) => {
+                  p.order = startIndex;
+                  startIndex++;
+                  return p.name;
+                });
     } else {
       return [''];
     }
@@ -50,6 +55,9 @@ export class AggPanelComponent implements OnInit, OnChanges {
 
   toggle(param) {
     param.isSelected = !param.isSelected;
+    if(param.isSelected === false) {
+      delete param.order;
+    }
     param.toggledTime = new Date(Date.now());
     this.selectedParamsChanged.emit(this.selectedFields);
   }
