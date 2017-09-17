@@ -27,5 +27,6 @@ export class Constants {
   static worktimeTotal = Constants.root + "worktime/total";
 
   // statics api endpoints
-  static staticsIndex = Constants.root + "statics";
+  static staticsWorktime = Constants.root + "statics/worktime";
+  static staticsPayment = Constants.root + "statics/payment";
 }

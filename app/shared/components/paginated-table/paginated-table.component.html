@@ -8,19 +8,19 @@
     <tbody>
       <tr>
         <th *ngFor="let field of fields">{{field.text}}</th>
-        <th></th>
-        <th></th>
+        <th *ngIf="showActions"></th>
+        <th *ngIf="showActions"></th>
       </tr>
     </tbody>
     <tbody>
       <tr *ngFor="let data of items">
         <td *ngFor="let field of fields" [innerHtml]="data[field.name] | cellFormatter:field.name"></td>
-        <td>
+        <td *ngIf="showActions">
           <button class="btn btn-xs btn-info cell-btn" (click)="onEdit(data)">
             <span class="glyphicon glyphicon-edit"></span>
           </button>
         </td>
-        <td>
+        <td *ngIf="showActions">
           <button class="btn btn-xs btn-danger cell-btn" (click)="onRemove(data._id)">
               <span class="glyphicon glyphicon-remove"></span>
           </button>

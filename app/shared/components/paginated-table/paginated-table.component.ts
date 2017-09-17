@@ -25,6 +25,7 @@ export class PaginatedTableComponent implements OnChanges {
   @Input() hasData: boolean;
   @Input() pageIndex: number;
   @Input() totalPages: number;
+  @Input() showActions: boolean = true;
   @Output() edit = new EventEmitter();
   @Output() remove = new EventEmitter();
 

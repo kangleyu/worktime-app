@@ -22,7 +22,8 @@
   <paginated-table 
     [items]="employee" 
     [fields]="'name:姓名|gender:性别|age:年龄|idCard:身份证|phone:电话|email:邮箱|createdAt:创建时间|updatedAt:更新时间' | parseFields"
-    [busy]="isBusy" 
+    [busy]="isBusy"
+    [showActions]="true"
     [hasData]="!noData"
     [pageIndex]="currentPage"
     [totalPages]="totalPages"

@@ -4,3 +4,4 @@ export * from './payment';
 export * from './worktime';
 export * from './worktype';
 export * from './base.model';
+export * from './statics';
