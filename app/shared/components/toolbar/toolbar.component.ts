@@ -32,6 +32,8 @@ export class TableToolbarComponent implements OnInit {
   isPreviousValid: boolean;
   @Input()
   isNextValid: boolean;
+  @Input()
+  showAddBtn: boolean = true;
 
   gotoPage: number;
 

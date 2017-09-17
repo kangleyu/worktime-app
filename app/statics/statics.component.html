@@ -11,10 +11,16 @@
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         <div>
-          <agg-panel 
-            [params]="'project:项目|employee:员工|worktype:工种|year:年份|month:月份' | parseFields"
-            (selectedParamsChanged)="aggregateWorktimes($event)"></agg-panel>
+          <agg-panel [params]="'project:项目|employee:员工|worktype:工种|year:年份|month:月份' | parseFields" (selectedParamsChanged)="aggregateWorktimes($event)"></agg-panel>
         </div>
+        <div class="table-action-area">
+          <table-toolbar (previous)="gotoPage($event)" (next)="gotoPage($event)" (goto)="gotoPage($event)" (refresh)="refreshTable()"
+            (export)="exportTable()" [current]="currentPage" [showAddBtn]="false" [isPreviousValid]="currentPage > 1" [isNextValid]="currentPage < totalPages">
+          </table-toolbar>
+        </div>
+        <paginated-table [items]="worktimes" [fields]="'employee:员工姓名|project:项目|worktype:工种|year:年|month:月|worktime:工时|verified:复核状态|createdAt:创建时间|updatedAt:更新时间' | parseFields"
+          [busy]="isBusy" [hasData]="!noData" [pageIndex]="currentPage" [totalPages]="totalPages">
+        </paginated-table>
       </div>
     </div>
   </div>
@@ -31,9 +37,7 @@
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
         <div>
-          <agg-panel 
-            [params]="'project:项目|employee:员工|worktype:工种|year:年份|month:月份' | parseFields"
-            (selectedParamsChanged)="aggregatePayments($event)"></agg-panel>
+          <agg-panel [params]="'project:项目|employee:员工|worktype:工种|year:年份|month:月份' | parseFields" (selectedParamsChanged)="aggregatePayments($event)"></agg-panel>
         </div>
       </div>
     </div>

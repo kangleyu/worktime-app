@@ -12,14 +12,16 @@
     <button class="btn btn-toolbar-item toolbar-nav" (click)="gotoAction()">跳转</button>
   </div>
   <div class="table-actions-group">
-    <modal-window [caption]="'新建'" [modalId]="'createNewModal'">
-      <button trigger class="btn btn-toolbar-item toolbar-add" (click)="createAction()" data-toggle="modal" data-target="#createNewModal">
-        <span class="glyphicon glyphicon-plus"></span>
-      </button>
-      <div content>
-        <ng-content addTemplate></ng-content>
-      </div>
-    </modal-window>
+    <div *ngIf="showAddBtn">
+      <modal-window [caption]="'新建'" [modalId]="'createNewModal'">
+        <button trigger class="btn btn-toolbar-item toolbar-add" (click)="createAction()" data-toggle="modal" data-target="#createNewModal">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        <div content>
+          <ng-content addTemplate></ng-content>
+        </div>
+      </modal-window>
+    </div>
     <button class="btn btn-toolbar-item toolbar-refresh" (click)="refreshAction()">
       <span class="glyphicon glyphicon-refresh"></span>
     </button>
