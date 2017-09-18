@@ -50,31 +50,31 @@
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        <!-- <div>
-          <agg-panel [params]="'project:项目|employee:员工|worktype:工种|year:年份|month:月份' | parseFields" (selectedParamsChanged)="aggregatePayments($event)"></agg-panel>
-        </div>
-        <div class="table-action-area">
-          <table-toolbar 
-            (previous)="gotoPage($event)" 
-            (next)="gotoPage($event)" 
-            (goto)="gotoPage($event)" 
-            (refresh)="refreshTable()"
-            (export)="exportTable()" 
-            [current]="currentPage" 
-            [showAddBtn]="false" 
-            [isPreviousValid]="currentPage > 1" 
-            [isNextValid]="currentPage < totalPages">
-          </table-toolbar>
-        </div>
-        <paginated-table 
-          [items]="paymentStatics"
-          [showActions]="false"
-          [fields]="fields"
-          [busy]="isBusy" 
-          [hasData]="!noData" 
-          [pageIndex]="currentPage" 
-          [totalPages]="totalPages">
-        </paginated-table> -->
+          <div>
+            <agg-panel [params]="'project:项目|employee:员工|worktype:工种|year:年份|month:月份' | parseFields" (selectedParamsChanged)="aggregatePayments($event)"></agg-panel>
+          </div>
+          <div class="table-action-area">
+            <table-toolbar 
+              (previous)="gotoPaymentPage($event)" 
+              (next)="gotoPaymentPage($event)" 
+              (goto)="gotoPaymentPage($event)" 
+              (refresh)="refreshTable()"
+              (export)="exportTable()" 
+              [current]="paymentCurrentPage" 
+              [showAddBtn]="false" 
+              [isPreviousValid]="paymentCurrentPage > 1" 
+              [isNextValid]="paymentCurrentPage < paymentTotalPages">
+            </table-toolbar>
+          </div>
+          <paginated-table 
+            [items]="paymentStatics"
+            [showActions]="false"
+            [fields]="paymentFields"
+            [busy]="paymentIsBusy" 
+            [hasData]="!paymentNoData" 
+            [pageIndex]="paymentCurrentPage" 
+            [totalPages]="paymentTotalPages">
+          </paginated-table>
       </div>
     </div>
   </div>
