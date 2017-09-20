@@ -19,6 +19,7 @@ import {
   styleUrls: ['./app/shared/components/paginated-table/paginated-table.component.css']
 })
 export class PaginatedTableComponent implements OnChanges {
+  @Input() name: string;
   @Input() items: any;
   @Input() fields: any;
   @Input() busy: boolean;

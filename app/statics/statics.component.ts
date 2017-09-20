@@ -7,8 +7,11 @@ import {
   Toastr,
   TOASTR_TOKEN,
   JQ_TOKEN,
-  StaticsService
+  StaticsService,
+  ExcelService
 } from '../shared/index';
+
+import * as SaveAs from 'file-saver';
 
 @Component({
   selector: 'wt-statics',
@@ -43,6 +46,7 @@ export class StaticsComponent {
 
   constructor(
     private staticsService: StaticsService,
+    private excelService: ExcelService,
     private titleService: Title,
     private parseFields: ParseFieldsPipe,
     @Inject(TOASTR_TOKEN) public toastr: Toastr,
@@ -133,8 +137,20 @@ export class StaticsComponent {
     });
   }
 
-  refreshTable() {
-    // this.searchInternal(this.cachedWorktimeTerm.join(','), this.currentPage, this.defaultPageSize);
+  refreshWorktimesStatics() {
+    this.updateWorktimeStatics(this.cachedWorktimeTerm.join(';'), 1, this.defaultPageSize);
+  }
+
+  refreshPaymentsStatics() {
+    this.updatePaymentStatics(this.cachedWorktimeTerm.join(';'), 1, this.defaultPageSize);
+  }
+
+  exportWorktimesStatics() {
+    this.excelService.exportTableToExcel(this.jquery('#worktimeStatics'), "download.csv");
+  }
+
+  exportPaymentsStatics() {
+    this.excelService.exportTableToExcel(this.jquery('#paymentStatics'), "download.csv");
   }
 
   transfer(terms: [string]) {

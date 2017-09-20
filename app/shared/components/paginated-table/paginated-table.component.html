@@ -1,10 +1,15 @@
-<div *ngIf="!hasData">
+<div *ngIf="isBusy" class="spinner-container">
+  <div class="spinner">
+    <p><i class="fa fa-refresh fa-spin"></i></p>
+  </div>
+</div>
+<div *ngIf="!hasData && !isBusy">
   <div class="empty-table">
     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 非常抱歉，没有找到任何数据！
   </div>
 </div>
-<div *ngIf="hasData">
-  <table class="wt-table">
+<div *ngIf="hasData && !isBusy">
+  <table [attr.id]="name" class="wt-table">
     <tbody>
       <tr>
         <th *ngFor="let field of fields">{{field.text}}</th>

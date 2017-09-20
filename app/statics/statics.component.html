@@ -14,12 +14,12 @@
           <agg-panel [params]="'project:项目|employee:员工|worktype:工种|year:年份|month:月份' | parseFields" (selectedParamsChanged)="aggregateWorktimes($event)"></agg-panel>
         </div>
         <div class="table-action-area">
-          <table-toolbar 
+          <table-toolbar
             (previous)="gotoWorktimePage($event)" 
             (next)="gotoWorktimePage($event)" 
             (goto)="gotoWorktimePage($event)" 
-            (refresh)="refreshTable()"
-            (export)="exportTable()" 
+            (refresh)="refreshWorktimesStatics()"
+            (export)="exportWorktimesStatics()" 
             [current]="worktimeCurrentPage" 
             [showAddBtn]="false" 
             [isPreviousValid]="worktimeCurrentPage > 1" 
@@ -27,6 +27,7 @@
           </table-toolbar>
         </div>
         <paginated-table 
+          [name]="'worktimeStatics'"
           [items]="worktimeStatics"
           [showActions]="false"
           [fields]="worktimeFields"
@@ -58,8 +59,8 @@
               (previous)="gotoPaymentPage($event)" 
               (next)="gotoPaymentPage($event)" 
               (goto)="gotoPaymentPage($event)" 
-              (refresh)="refreshTable()"
-              (export)="exportTable()" 
+              (refresh)="refreshPaymentsStatics()"
+              (export)="exportPaymentsStatics()" 
               [current]="paymentCurrentPage" 
               [showAddBtn]="false" 
               [isPreviousValid]="paymentCurrentPage > 1" 
@@ -67,6 +68,7 @@
             </table-toolbar>
           </div>
           <paginated-table 
+            [name]="'paymentStatics'"
             [items]="paymentStatics"
             [showActions]="false"
             [fields]="paymentFields"
