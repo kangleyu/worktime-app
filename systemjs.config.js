@@ -25,6 +25,7 @@
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
       'file-saver': 'npm:file-saver/FileSaver.min.js',
+      'ng2-charts': 'npm:ng2-charts/bundles/ng2-charts.umd.min.js',
       // other libraries
       'rxjs': 'npm:rxjs',
     },

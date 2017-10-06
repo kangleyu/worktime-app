@@ -6,6 +6,7 @@ export * from "./payment.service";
 export * from "./worktime.service";
 export * from "./worktype.service";
 export * from "./statics.service";
+export * from "./dashboard.service";
 export * from "./excel.service";
 
 export * from "./components/paginated-table/paginated-table.component";

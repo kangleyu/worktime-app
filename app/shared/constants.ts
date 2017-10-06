@@ -29,4 +29,7 @@ export class Constants {
   // statics api endpoints
   static staticsWorktime = Constants.root + "statics/worktime";
   static staticsPayment = Constants.root + "statics/payment";
+
+  static dashboardEmployee = Constants.root + "dashboard/employee";
+  static dashboardGeneral = Constants.root + "dashboard/general";
 }
