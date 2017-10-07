@@ -39,7 +39,7 @@ export class AuthenticationService {
   }
 
   getHttpOptions(): RequestOptions {
-    const headers = new Headers({ Authorization: 'Bearer' + this.token });
+    const headers = new Headers({ Authorization: this.token });
     const options = new RequestOptions({ headers });
     return options;
   }

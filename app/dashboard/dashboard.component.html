@@ -35,42 +35,42 @@
 <div class="row dashboard-row">
   <div class="col-sm-12 col-md-4 col-lg-4">
     <!-- Project worktime Total Information - Doughnut Chart (Show total worktime for each project) -->
-    <div style="display: block;max-width:200px;max-height:200px">
+    <!-- <div style="display: block;max-width:200px;max-height:200px">
       <canvas baseChart [data]="paymentsChartData" [labels]="paymentsChartLabels" [chartType]="'doughnut'" ></canvas>
-    </div>
+    </div> -->
   </div>
   <div class="col-sm-12 col-md-4 col-lg-4">
     <!-- Worktype worktime Information - Doughnut Chart (Show total worktime for each worktype) -->
-    <div style="display: block;max-width:200px;max-height:200px">
+    <!-- <div style="display: block;max-width:200px;max-height:200px">
       <canvas baseChart [data]="paymentsChartData" [labels]="paymentsChartLabels" [chartType]="'doughnut'" (chartHover)="chartHovered($event)"
         (chartClick)="chartClicked($event)"></canvas>
-    </div>
+    </div> -->
   </div>
   <!-- <div class="col-sm-12 col-md-4 col-lg-4" style="background:#34495e;color:white"> -->
   <div class="col-sm-12 col-md-4 col-lg-4">
     <!-- Employee Information - Bar Chart
     (Show the employee number based on age) -->
-    <div class="dashboard-graph">
+    <!-- <div class="dashboard-graph">
       <div style="display: block;">
         <canvas baseChart [datasets]="employeeBarChartData" [labels]="employeeBarChartLabels" [options]="true" [colors]="employeeChartColors"
           [legend]="barChartLegend" [chartType]="'bar'"></canvas>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <div class="row dashboard-row">
   <div class="col-sm-12 col-md-6 col-lg-6">
     <!-- Payments based month (Per year, year will be a parameter) - Line Chart -->
-    <div style="display: block;max-width:400px;max-height:400px">
+    <!-- <div style="display: block;max-width:400px;max-height:400px">
       <canvas baseChart [datasets]="paymentsPerMondthChartData" [labels]="paymentsPerMondthChartLabel"
         [options]="paymentsPerMondthChartOptions" [legend]="true" [chartType]="'line'"></canvas>
-    </div>
+    </div> -->
   </div>
   <div class="col-sm-12 col-md-6 col-lg-6">
     <!-- Worktime based month (Per year, year will be a parameter) - Line Chart -->
-    <div style="display: block;max-width:400px;max-height:400px">
+    <!-- <div style="display: block;max-width:400px;max-height:400px">
       <canvas baseChart [datasets]="paymentsPerMondthChartData" [labels]="paymentsPerMondthChartLabel"
         [options]="paymentsPerMondthChartOptions" [legend]="true" [chartType]="'line'"></canvas>
-    </div>
+    </div> -->
   </div>
 </div>
