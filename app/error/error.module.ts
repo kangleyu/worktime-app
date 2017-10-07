@@ -9,7 +9,7 @@ import { NotFoundComponent } from './notFound.component';
 
 const errorRoutes: Routes = [
   {
-    path: '*',
+    path: 'notfound',
     component: NotFoundComponent
   }
 ];
