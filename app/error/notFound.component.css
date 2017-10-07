@@ -1,0 +1,12 @@
+.notfound-page-container {
+  width: 100%;
+  height: 100%;
+  background: #34495e;
+  color: #73879C;
+}
+
+.error-number {
+  font-size: 48px;
+  line-height: 90px;
+  margin: 20px 0;
+}
