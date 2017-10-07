@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { PageBasedComponent } from "../pageBased.component";
+import { PageBasedComponent } from "../shared/pageBased.component";
 import { Statics } from "../shared/models/index";
 import { ParseFieldsPipe } from "../shared/index";
 import {

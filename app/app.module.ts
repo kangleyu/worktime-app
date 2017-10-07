@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { CoreModule } from './core/core.module';
 import { ErrorModule } from "./error/error.module";
@@ -7,14 +7,19 @@ import { MainModule } from "./main/main.module";
 import { LoginModule } from "./login/login.module";
 import { AppComponent } from './app.component';
 
+// const appRoutes: Routes = [
+//   {
+//     path: '*', redirectTo: 'notFound'
+//   }
+// ];
+
 @NgModule({
   imports: [
-    RouterModule.forRoot([
-    ]),
+    RouterModule.forRoot([]),
     CoreModule,
-    ErrorModule,
+    MainModule,
     LoginModule,
-    MainModule
+    ErrorModule,
   ],
   declarations: [
     AppComponent

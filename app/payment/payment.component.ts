@@ -15,7 +15,7 @@ import {
   ProjectService,
   WorktypeService
 } from '../shared/index';
-import { PageBasedComponent } from "../pageBased.component";
+import { PageBasedComponent } from "../shared/pageBased.component";
 
 @Component({
   selector: 'wt-payment',

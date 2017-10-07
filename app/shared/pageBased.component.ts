@@ -5,7 +5,7 @@ import {
   Toastr,
   TOASTR_TOKEN,
   JQ_TOKEN
-} from './shared/index';
+} from './index';
 
 export class PageBasedComponent {
   public searchTerm: string;

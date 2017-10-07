@@ -12,7 +12,7 @@ import {
   JQ_TOKEN,
   EmployeeService
 } from '../shared/index';
-import { PageBasedComponent } from "../pageBased.component";
+import { PageBasedComponent } from "../shared/pageBased.component";
 
 @Component({
   selector: 'wt-employee',
