@@ -6,11 +6,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { ProjectComponent } from './project.component';
+import { AuthGuard } from "../guards/index";
 
 const projectRoutes: Routes = [
   {
     path: 'project',
-    component: ProjectComponent
+    component: ProjectComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -28,6 +30,7 @@ const projectRoutes: Routes = [
     ProjectComponent
   ],
   providers: [
+    AuthGuard
   ]
 })
 export class ProjectModule { }

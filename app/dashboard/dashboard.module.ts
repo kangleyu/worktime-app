@@ -7,11 +7,13 @@ import { ChartsModule } from 'ng2-charts';
 
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
+import { AuthGuard } from "../guards/index";
 
 const dashboardRoutes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -30,6 +32,7 @@ const dashboardRoutes: Routes = [
     DashboardComponent
   ],
   providers: [
+    AuthGuard
   ]
 })
 export class DashboardModule { }

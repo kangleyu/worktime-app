@@ -3,11 +3,12 @@ import { Http, Response } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import { Constants } from "./index";
 import { Statics } from "./models/index";
+import { AuthenticationService } from "./authentication.service";
 
 @Injectable()
 export class StaticsService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private authenticationService: AuthenticationService) {
   }
 
   getWorktimeStatics(params: string, pageIndex: number, pageSize: number): Observable<Statics[]> {
@@ -16,7 +17,7 @@ export class StaticsService {
     let requestUrl = Constants.staticsWorktime;
 
     requestUrl += "?page=" + index + "&size=" + size + "&params=" + params;
-    return this.http.get(requestUrl)
+    return this.http.get(requestUrl, this.authenticationService.getHttpOptions())
       .timeout(3000)
       .throttleTime(2000)
       .map((response: Response) => {
@@ -29,7 +30,7 @@ export class StaticsService {
     let requestUrl = Constants.staticsWorktime;
 
     requestUrl += "/total?params=" + params;
-    return this.http.get(requestUrl)
+    return this.http.get(requestUrl, this.authenticationService.getHttpOptions())
       .timeout(3000)
       .throttleTime(2000)
       .map((response: Response) => {
@@ -44,7 +45,7 @@ export class StaticsService {
     let requestUrl = Constants.staticsPayment;
 
     requestUrl += "?page=" + index + "&size=" + size + "&params=" + params;
-    return this.http.get(requestUrl)
+    return this.http.get(requestUrl, this.authenticationService.getHttpOptions())
       .timeout(3000)
       .throttleTime(2000)
       .map((response: Response) => {
@@ -57,7 +58,7 @@ export class StaticsService {
     let requestUrl = Constants.staticsPayment;
 
     requestUrl += "/total?params=" + params;
-    return this.http.get(requestUrl)
+    return this.http.get(requestUrl, this.authenticationService.getHttpOptions())
       .timeout(3000)
       .throttleTime(2000)
       .map((response: Response) => {

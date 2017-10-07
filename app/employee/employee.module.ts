@@ -3,15 +3,15 @@
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { SharedModule } from '../shared/shared.module';
-
 import { EmployeeComponent } from './employee.component';
+import { AuthGuard } from "../guards/index";
 
 const employeeRoutes: Routes = [
   {
     path: 'employee',
-    component: EmployeeComponent
+    component: EmployeeComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -29,6 +29,7 @@ const employeeRoutes: Routes = [
     EmployeeComponent
   ],
   providers: [
+    AuthGuard
   ]
 })
 export class EmployeeModule { }

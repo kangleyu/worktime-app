@@ -3,16 +3,13 @@
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { SharedModule } from '../shared/shared.module';
-import { StaticsComponent } from './statics.component';
-import { AuthGuard } from "../guards/index";
+import { LoginComponent } from "./login.component";
 
-const staticsRoutes: Routes = [
+const loginRoutes: Routes = [
   {
-    path: 'statics',
-    component: StaticsComponent,
-    canActivate: [AuthGuard]
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
@@ -22,15 +19,14 @@ const staticsRoutes: Routes = [
     SharedModule
   ],
   imports:[
-    RouterModule.forChild(staticsRoutes),
+    RouterModule.forChild(loginRoutes),
     RouterModule,
     SharedModule
   ],
   declarations: [
-    StaticsComponent
+    LoginComponent
   ],
   providers: [
-    AuthGuard
   ]
 })
-export class StaticsModule { }
+export class LoginModule { }

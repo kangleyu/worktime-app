@@ -1,35 +1,39 @@
 export class Constants {
-  static root = "http://localhost:8010/api/";
+  static root = "http://localhost:8010/";
 
   // employee api endpoints
-  static employeeIndex = Constants.root + "employee";
-  static employeeSearch = Constants.root + "employee/search/";
-  static employeeTotal = Constants.root + "employee/total";
+  static employeeIndex = Constants.root + "api/employee";
+  static employeeSearch = Constants.root + "api/employee/search/";
+  static employeeTotal = Constants.root + "api/employee/total";
 
   // payment api endpoints
-  static paymentIndex = Constants.root + "payment";
-  static paymentSearch = Constants.root + "payment/search/";
-  static paymentTotal = Constants.root + "payment/total";
+  static paymentIndex = Constants.root + "api/payment";
+  static paymentSearch = Constants.root + "api/payment/search/";
+  static paymentTotal = Constants.root + "api/payment/total";
 
   // project api endpoints
-  static projectIndex = Constants.root + "project";
-  static projectSearch = Constants.root + "project/search/";
-  static projectTotal = Constants.root + "project/total";
+  static projectIndex = Constants.root + "api/project";
+  static projectSearch = Constants.root + "api/project/search/";
+  static projectTotal = Constants.root + "api/project/total";
 
   // worktype api endpoints
-  static worktypeIndex = Constants.root + "worktype";
-  static worktypeSearch = Constants.root + "worktype/search/";
-  static worktypeTotal = Constants.root + "worktype/total";
+  static worktypeIndex = Constants.root + "api/worktype";
+  static worktypeSearch = Constants.root + "api/worktype/search/";
+  static worktypeTotal = Constants.root + "api/worktype/total";
 
   // worktime api endpoints
-  static worktimeIndex = Constants.root + "worktime";
-  static worktimeSearch = Constants.root + "worktime/search/";
-  static worktimeTotal = Constants.root + "worktime/total";
+  static worktimeIndex = Constants.root + "api/worktime";
+  static worktimeSearch = Constants.root + "api/worktime/search/";
+  static worktimeTotal = Constants.root + "api/worktime/total";
 
   // statics api endpoints
-  static staticsWorktime = Constants.root + "statics/worktime";
-  static staticsPayment = Constants.root + "statics/payment";
+  static staticsWorktime = Constants.root + "api/statics/worktime";
+  static staticsPayment = Constants.root + "api/statics/payment";
 
-  static dashboardEmployee = Constants.root + "dashboard/employee";
-  static dashboardGeneral = Constants.root + "dashboard/general";
+  static dashboardEmployee = Constants.root + "api/dashboard/employee";
+  static dashboardGeneral = Constants.root + "api/dashboard/general";
+
+  // authorization endpoints
+  static authenticate = Constants.root + "auth/authenticate";
+  static register = Constants.root + "auth/register";
 }

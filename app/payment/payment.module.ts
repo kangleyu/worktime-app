@@ -6,11 +6,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { PaymentComponent } from './payment.component';
+import { AuthGuard } from "../guards/index";
 
 const paymentRoutes: Routes = [
   {
     path: 'payment',
-    component: PaymentComponent
+    component: PaymentComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -28,6 +30,7 @@ const paymentRoutes: Routes = [
     PaymentComponent
   ],
   providers: [
+    AuthGuard
   ]
 })
 export class PaymentModule { }

@@ -3,6 +3,7 @@ import { Http, Response } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import { Constants } from "./index";
 import { Statics } from "./models/index";
+import { AuthenticationService } from "./authentication.service";
 
 class Labels {
   labels: string[];
@@ -15,11 +16,11 @@ class Data {
 
 @Injectable()
 export class DashboardService {
-  constructor(private http: Http) {
+  constructor(private http: Http, private authenticationService: AuthenticationService) {
   }
 
   getEmployeeData(): Observable<any[]> {
-    return this.http.get(Constants.dashboardEmployee)
+    return this.http.get(Constants.dashboardEmployee, this.authenticationService.getHttpOptions())
     .timeout(3000)
     .throttleTime(2000)
     .map((response: Response) => {
@@ -29,7 +30,7 @@ export class DashboardService {
   }
 
   getGeneralData(): Observable<any[]> {
-    return this.http.get(Constants.dashboardGeneral)
+    return this.http.get(Constants.dashboardGeneral, this.authenticationService.getHttpOptions())
     .timeout(3000)
     .throttleTime(2000)
     .map((response: Response) => {

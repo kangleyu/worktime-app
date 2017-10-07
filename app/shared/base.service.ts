@@ -5,12 +5,13 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/timeout";
 import "rxjs/add/operator/throttleTime";
 import 'rxjs/add/observable/throw';
-
+import { AuthenticationService } from "./authentication.service";
 import { IModel } from "./models/index";
 
 export class BaseService<T extends IModel> {
   constructor(
     public http: Http,
+    public authenticationService: AuthenticationService,
     public searchUrl: string,
     public indexUrl: string,
     public totalUrl: string) { }
@@ -26,7 +27,8 @@ export class BaseService<T extends IModel> {
       requestUrl = this.indexUrl;
     }
     requestUrl += "/page/" + index + "/size/" + size;
-    return this.http.get(requestUrl)
+
+    return this.http.get(requestUrl, this.authenticationService.getHttpOptions())
       .timeout(3000)
       .throttleTime(2000)
       .map((response: Response) => {
@@ -36,7 +38,7 @@ export class BaseService<T extends IModel> {
   }
 
   public getAll(): Observable<T[]> {
-    return this.http.get(this.indexUrl)
+    return this.http.get(this.indexUrl, this.authenticationService.getHttpOptions())
     .map((response: Response) => {
       return response.json() as T[];
     })
@@ -45,8 +47,7 @@ export class BaseService<T extends IModel> {
 
   public getTotalCount(): Observable<number> {
     const requestUrl = this.totalUrl;
-
-    return this.http.get(requestUrl)
+    return this.http.get(requestUrl, this.authenticationService.getHttpOptions())
       .map((response: Response) => {
         return response.json() as number;
       })
@@ -54,7 +55,7 @@ export class BaseService<T extends IModel> {
   }
 
   public save(item: T): Observable<T> {
-    return this.http.post(this.indexUrl, item)
+    return this.http.post(this.indexUrl, item, this.authenticationService.getHttpOptions())
     .map((response: Response) => {
       return response.json() as T;
     })
@@ -63,7 +64,7 @@ export class BaseService<T extends IModel> {
 
   public update(item: T): Observable<T> {
     item.updatedAt = new Date(Date.now());
-    return this.http.patch(this.indexUrl + "/" + item.id, item)
+    return this.http.patch(this.indexUrl + "/" + item.id, item, this.authenticationService.getHttpOptions())
     .map((response: Response) => {
       return response.json() as T;
     })
@@ -71,7 +72,7 @@ export class BaseService<T extends IModel> {
   }
 
   public remove(id: string): Observable<string> {
-    return this.http.delete(this.indexUrl + "/" + id)
+    return this.http.delete(this.indexUrl + "/" + id, this.authenticationService.getHttpOptions())
     .map((response: Response) => {
       return response.json();
     })

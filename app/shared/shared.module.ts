@@ -11,6 +11,7 @@ import {
   TOASTR_TOKEN,
   JQ_TOKEN,
   Toastr,
+  AuthenticationService,
   ProjectService,
   EmployeeService,
   PaymentService,
@@ -80,6 +81,7 @@ declare const jQuery: any;
   providers: [
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
+    AuthenticationService,
     ProjectService,
     EmployeeService,
     PaymentService,

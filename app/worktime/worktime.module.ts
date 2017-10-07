@@ -3,15 +3,15 @@
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { SharedModule } from '../shared/shared.module';
-
 import { WorktimeComponent } from './worktime.component';
+import { AuthGuard } from "../guards/index";
 
 const worktimeRoutes: Routes = [
   {
     path: 'worktime',
-    component: WorktimeComponent
+    component: WorktimeComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -29,6 +29,7 @@ const worktimeRoutes: Routes = [
     WorktimeComponent
   ],
   providers: [
+    AuthGuard
   ]
 })
 export class WorktimeModule { }
