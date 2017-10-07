@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
+import { AuthenticationService } from "../shared/index";
 
 @Component({
   selector: 'worktime-app-main',
@@ -9,11 +10,23 @@ import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 })
 export class MainComponent {
   pageTitle: string;
-  constructor(private titleService: Title, private router: Router, private activatedRoute: ActivatedRoute) {
+  currentUser: string;
+
+  constructor(
+    private titleService: Title,
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
+    this.currentUser = this.authenticationService.getCurrentUsername();
     this.router.events.subscribe((event) => {
       if(event instanceof NavigationEnd) {
         this.pageTitle = this.titleService.getTitle();
       }
     });
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigateByUrl('/login');
   }
 }

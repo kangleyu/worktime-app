@@ -145,3 +145,12 @@
     padding-left: 15px;
   }
 }
+
+.profile-dropdown {
+  padding: 0px;
+}
+
+.profile-dropdown-menu {
+  left: auto;
+  right: 0;
+}

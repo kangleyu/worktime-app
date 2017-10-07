@@ -148,3 +148,17 @@ input[type="text"].text-search:-ms-input-placeholder  {
 .cell-btn {
   font-size: 0.8em;
 }
+
+.left {
+  display: block;
+  float: left;
+}
+
+.right {
+  display: block;
+  float: right;
+}
+
+.clear {
+  clear: both;
+}

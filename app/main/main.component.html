@@ -2,10 +2,7 @@
   <nav role="navigation" class="wt-navbar">
     <!-- Navigate toggle button for mobile version -->
     <div class="wt-navbar-toggle navbar-header">
-      <button type="button" 
-              data-target="#navbarCollapse" 
-              data-toggle="collapse" 
-              class="wt-toggle-btn navbar-toggle">
+      <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="wt-toggle-btn navbar-toggle">
         <span class="sr-only"></span>
         <span class="icon-bar navbar-icon-bar"></span>
         <span class="icon-bar navbar-icon-bar"></span>
@@ -15,11 +12,11 @@
     </div>
     <!-- Navigation Page -->
     <div id="navbarCollapse" class="collapse wt-navbar-collapse" style="height:0;">
-      <a class="wt-navbar-menuitem" routerLink="/"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a class="wt-navbar-menuitem" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <i class="fa fa-tachometer" aria-hidden="true"></i>
         <span>综合信息</span>
       </a>
-      <a class="wt-navbar-menuitem"  routerLink="/project" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a class="wt-navbar-menuitem" routerLink="/project" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <i class="fa fa-tasks" aria-hidden="true"></i>
         <span>项目列表</span>
       </a>
@@ -47,7 +44,20 @@
   </nav>
   <div class="wt-content">
     <div class="wt-content-header">
-      {{pageTitle}}
+      <div class="left">
+        {{pageTitle}}
+      </div>
+      <div class="right">
+        <div class="btn-group">
+          <a class="dropdown-toggle profile-dropdown" data-toggle="dropdown">{{currentUser}} <span class="caret"></span></a>
+          <ul class="dropdown-menu profile-dropdown-menu">
+            <li><a href="javascript:void(0);">信息</a></li>
+            <li class="divider"></li>
+            <li><a href="javascript:void(0);" (click)="logout()">退出</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="clear"></div>
     </div>
     <router-outlet class="wt-content-main">
     </router-outlet>

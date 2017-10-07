@@ -43,4 +43,12 @@ export class AuthenticationService {
     const options = new RequestOptions({ headers });
     return options;
   }
+
+  getCurrentUsername(): string {
+    const user = JSON.parse(localStorage.getItem(this.currentUser));
+    if (user !== undefined && user.username !== undefined) {
+      return user.username;
+    }
+    return "异常用户";
+  }
 }
