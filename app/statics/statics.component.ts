@@ -203,4 +203,11 @@ export class StaticsComponent {
       this.updateWorktimeStatics(this.cachedWorktimeTerm.join(';'), page, this.defaultPageSize);
     }
   }
+
+  gotoPaymentPage(page) {
+    if (page > 0 && page <= this.paymentTotalPages) {
+      this.paymentCurrentPage = page;
+      this.updatePaymentStatics(this.cachedPaymentTerm.join(';'), page, this.defaultPageSize);
+    }
+  }
 }
