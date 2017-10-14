@@ -1,3 +1,5 @@
+'use strict';
+
 const gulp = require('gulp');
 const del = require('del');
 const sourcemaps = require('gulp-sourcemaps');
@@ -27,6 +29,7 @@ gulp.task('copy:assets', function() {
     'app/**/*.*', 
     'index.html', 
     'favicon.ico',
+    'loader.gif',
     'styles.css',
     'systemjs.config.js',
     '!app/**/*.ts'], { base: './'})

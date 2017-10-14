@@ -162,3 +162,17 @@ input[type="text"].text-search:-ms-input-placeholder  {
 .clear {
   clear: both;
 }
+
+.loader-container {
+  height: 100%;
+  position: relative;
+  background-color: #ecf0f1;
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -64px; /* -1 * image width / 2 */
+  margin-top: -64px; 
+}
