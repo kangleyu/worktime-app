@@ -30,6 +30,7 @@ gulp.task('copy:assets', function() {
     'index.html', 
     'favicon.ico',
     'loader.gif',
+    'spinner.gif',
     'styles.css',
     'systemjs.config.js',
     '!app/**/*.ts'], { base: './'})
