@@ -23,9 +23,10 @@ export class AuthenticationService {
     return this.http.post(Constants.authenticate, body, new RequestOptions({ headers }))
       .map((response: Response) => {
         const token = response.json() && response.json().token;
+        const name = response.json() && response.json().name;
         if (token) {
           this.token = token;
-          localStorage.setItem(this.currentUser, JSON.stringify({ username, token }));
+          localStorage.setItem(this.currentUser, JSON.stringify({ name, username, token }));
           return true;
         } else {
           return false;
@@ -47,7 +48,11 @@ export class AuthenticationService {
   getCurrentUsername(): string {
     const user = JSON.parse(localStorage.getItem(this.currentUser));
     if (user !== undefined && user.username !== undefined) {
-      return user.username;
+      if (user.name !== undefined) {
+        return user.name;
+      } else {
+        return user.name;
+      }
     }
     return "异常用户";
   }
