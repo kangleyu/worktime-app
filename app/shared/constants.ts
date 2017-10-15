@@ -1,5 +1,5 @@
 export class Constants {
-  static root = "http://139.196.56.36:8010/";
+  static root = "http://localhost:8010/";
 
   // employee api endpoints
   static employeeIndex = Constants.root + "api/employee";
