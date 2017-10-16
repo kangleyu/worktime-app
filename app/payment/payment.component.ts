@@ -13,7 +13,8 @@ import {
   PaymentService,
   EmployeeService,
   ProjectService,
-  WorktypeService
+  WorktypeService,
+  ExcelService
 } from '../shared/index';
 import { PageBasedComponent } from "../shared/pageBased.component";
 
@@ -34,10 +35,11 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
     private projectService: ProjectService,
     private worktypeService: WorktypeService,
     private titleService: Title,
+    private excelService: ExcelService,
     private activatedRoute: ActivatedRoute,
     @Inject(TOASTR_TOKEN) toastr: Toastr,
     @Inject(JQ_TOKEN) public jquery: any) {
-      super(toastr, jquery);
+      super(excelService, toastr, jquery);
   }
 
   ngOnInit() {
@@ -139,5 +141,9 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
     this.currentPayment = args;
     this.editMode = "update";
     super.editItem(args);
+  }
+
+  exportTable() {
+    this.excelService.exportTableToExcel(this.jquery('#paymentsTable'), "payments_download");
   }
 }

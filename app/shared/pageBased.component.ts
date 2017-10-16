@@ -2,6 +2,7 @@ import {
   Inject
 } from '@angular/core';
 import {
+  ExcelService,
   Toastr,
   TOASTR_TOKEN,
   JQ_TOKEN
@@ -20,6 +21,7 @@ export class PageBasedComponent {
   public defaultPageSize: number = 12;
 
   constructor(
+    excelService: ExcelService,
     @Inject(TOASTR_TOKEN) public toastr: Toastr,
     @Inject(JQ_TOKEN) public jquery: any) {
     this.currentPage = 1;

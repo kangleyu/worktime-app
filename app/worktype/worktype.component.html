@@ -19,7 +19,8 @@
       </div>
     </table-toolbar>
   </div>
-  <paginated-table 
+  <paginated-table
+    [name]="'worktypesTable'"
     [items]="worktypes" 
     [fields]="'worktype:工种|lead:负责人|createdAt:创建时间|updatedAt:更新时间' | parseFields" 
     [busy]="isBusy" 

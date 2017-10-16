@@ -146,11 +146,11 @@ export class StaticsComponent {
   }
 
   exportWorktimesStatics() {
-    this.excelService.exportTableToExcel(this.jquery('#worktimeStatics'), "download.csv");
+    this.excelService.exportTableToExcel(this.jquery('#worktimeStatics'), "worktime_static_download");
   }
 
   exportPaymentsStatics() {
-    this.excelService.exportTableToExcel(this.jquery('#paymentStatics'), "download.csv");
+    this.excelService.exportTableToExcel(this.jquery('#paymentStatics'), "payment_static_download");
   }
 
   transfer(terms: [string]) {

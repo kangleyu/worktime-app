@@ -11,7 +11,8 @@ import {
   TOASTR_TOKEN,
   JQ_TOKEN,
   WorktypeService,
-  EmployeeService
+  EmployeeService,
+  ExcelService
 } from '../shared/index';
 import { PageBasedComponent } from "../shared/pageBased.component";
 
@@ -28,10 +29,11 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
     private worktypeService: WorktypeService,
     private employeeService: EmployeeService,
     private titleService: Title,
+    private excelService: ExcelService,
     private activatedRoute: ActivatedRoute,
     @Inject(TOASTR_TOKEN) toastr: Toastr,
     @Inject(JQ_TOKEN) public jquery: any) {
-      super(toastr, jquery);
+      super(excelService, toastr, jquery);
   }
 
   ngOnInit() {
@@ -121,5 +123,9 @@ export class WorktypeComponent extends PageBasedComponent implements OnInit {
     this.currentWorktype = args;
     this.editMode = "update";
     super.editItem(args);
+  }
+
+  exportTable() {
+    this.excelService.exportTableToExcel(this.jquery('#worktypesTable'), "worktypes_download");
   }
 }

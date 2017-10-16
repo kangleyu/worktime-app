@@ -17,7 +17,8 @@
       </div>
     </table-toolbar>
   </div>
-  <paginated-table 
+  <paginated-table
+    [name]="'projectsTable'"
     [items]="projects" 
     [fields]="'name:项目名称|address:项目地址|manager:负责人|state:项目状态|createdAt:创建时间|updatedAt:更新时间' | parseFields"
     [busy]="isBusy" 

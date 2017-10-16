@@ -7,6 +7,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Title } from '@angular/platform-browser';
 import { IEmployee } from '../shared/models/index';
 import {
+  ExcelService,
   Toastr,
   TOASTR_TOKEN,
   JQ_TOKEN,
@@ -25,10 +26,11 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private titleService: Title,
+    private excelService: ExcelService,
     private activatedRoute: ActivatedRoute,
     @Inject(TOASTR_TOKEN) toastr: Toastr,
     @Inject(JQ_TOKEN) public jquery: any) {
-      super(toastr, jquery);
+      super(excelService, toastr, jquery);
   }
 
   ngOnInit() {
@@ -119,5 +121,9 @@ export class EmployeeComponent extends PageBasedComponent implements OnInit {
     this.currentEmployee = args;
     this.editMode = "update";
     super.editItem(args);
+  }
+
+  exportTable() {
+    this.excelService.exportTableToExcel(this.jquery('#employeeTable'), "employee_download");
   }
 }
