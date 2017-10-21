@@ -142,6 +142,14 @@ export class WorktimeComponent extends PageBasedComponent implements OnInit {
     super.editItem(args);
   }
 
+  copyItem(args) {
+    this.currentWorktime = args;
+    delete this.currentWorktime.id;
+    this.currentWorktime.worktime = 0;
+    this.editMode = "new";
+    super.copyItem(args);
+  }
+
   exportTable() {
     this.excelService.exportTableToExcel(this.jquery('#worktimesTable'), "worktimes_download");
   }

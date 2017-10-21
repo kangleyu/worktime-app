@@ -27,7 +27,9 @@
     [pageIndex]="currentPage"
     [totalPages]="totalPages"
     [hasData]="!noData"
+    [allowCopy]="true"
     (edit)="editItem($event)"
+    (clone)="copyItem($event)"
     (remove)="removeItem($event)">
   </paginated-table>
 </section>

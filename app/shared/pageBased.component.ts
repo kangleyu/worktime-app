@@ -65,6 +65,10 @@ export class PageBasedComponent {
     this.jquery('#createNewModal').modal('show');
   }
 
+  copyItem(args) {
+    this.jquery('#createNewModal').modal('show');
+  }
+
   removeItem(args) {
   }
 }

@@ -33,7 +33,8 @@ import {
   VerifiedStatusPipe,
   MonthPipe,
   ParseFieldsPipe,
-  CellFormatterPipe
+  CellFormatterPipe,
+  GreaterThanZeroValidator
 } from "./index";
 
 declare const toastr: Toastr;
@@ -46,6 +47,7 @@ declare const jQuery: any;
     VerifiedStatusPipe,
     ParseFieldsPipe,
     CellFormatterPipe,
+    GreaterThanZeroValidator,
     PaginatedTableComponent,
     TableToolbarComponent,
     ModalWindowComponent,
@@ -68,6 +70,7 @@ declare const jQuery: any;
     HttpModule,
     BrowserModule,
     ParseFieldsPipe,
+    GreaterThanZeroValidator,
     PaginatedTableComponent,
     TableToolbarComponent,
     ModalWindowComponent,

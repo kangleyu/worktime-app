@@ -13,6 +13,7 @@
     <tbody>
       <tr>
         <th *ngFor="let field of fields">{{field.text}}</th>
+        <th *ngIf="allowCopy"></th>
         <th *ngIf="showActions"></th>
         <th *ngIf="showActions"></th>
       </tr>
@@ -20,6 +21,11 @@
     <tbody>
       <tr *ngFor="let data of items">
         <td *ngFor="let field of fields" [innerHtml]="data[field.name] | cellFormatter:field.name"></td>
+        <td *ngIf="allowCopy">
+            <button class="btn btn-xs btn-warning cell-btn" (click)="onCopy(data)">
+              <span class="glyphicon glyphicon-copy"></span>
+            </button>
+          </td>
         <td *ngIf="showActions">
           <button class="btn btn-xs btn-info cell-btn" (click)="onEdit(data)">
             <span class="glyphicon glyphicon-edit"></span>

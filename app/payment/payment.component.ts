@@ -143,6 +143,14 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
     super.editItem(args);
   }
 
+  copyItem(args) {
+    this.currentPayment = args;
+    delete this.currentPayment.id;
+    this.currentPayment.paid = 0;
+    this.editMode = "new";
+    super.copyItem(args);
+  }
+
   exportTable() {
     this.excelService.exportTableToExcel(this.jquery('#paymentsTable'), "payments_download");
   }

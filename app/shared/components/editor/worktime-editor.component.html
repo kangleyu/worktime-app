@@ -58,8 +58,9 @@
       </div>
       <div class="form-group" [ngClass]="{'error': newWorktimeForm.controls.worktime?.invalid && newWorktimeForm.controls.worktime?.touched}">
           <em *ngIf="newWorktimeForm.controls.worktime?.invalid && newWorktimeForm.controls.worktime?.touched && newWorktimeForm.controls.worktime?.errors.required">＊工时必需填＊</em>
-          <em *ngIf="newWorktimeForm.controls.worktime?.invalid && newWorktimeForm.controls.worktime?.touched && newWorktimeForm.controls.worktime?.errors.pattern">＊请填入有效数字＊</em>           
-          <input class="form-control" type="text" name="worktime" placeholder="工时" [(ngModel)]="worktime.worktime" pattern="^[.0-9]{1,}$" required>
+          <em *ngIf="newWorktimeForm.controls.worktime?.invalid && newWorktimeForm.controls.worktime?.touched && newWorktimeForm.controls.worktime?.errors.pattern">＊请填入有效数字＊</em>
+          <em *ngIf="newWorktimeForm.controls.worktime?.invalid && newWorktimeForm.controls.worktime?.touched && newWorktimeForm.controls.worktime?.errors.greaterThanZero">*工时必需大于零*</em>
+          <input class="form-control" type="text" name="worktime" placeholder="工时" [(ngModel)]="worktime.worktime" pattern="^[.0-9]{1,}$" required greaterThanZero>
       </div>
       <div class="form-check" *ngIf="mode === 'update'">
         <label class="form-check-label">

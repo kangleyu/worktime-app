@@ -27,8 +27,10 @@ export class PaginatedTableComponent implements OnChanges {
   @Input() pageIndex: number;
   @Input() totalPages: number;
   @Input() showActions: boolean = true;
+  @Input() allowCopy: boolean = false;
   @Output() edit = new EventEmitter();
   @Output() remove = new EventEmitter();
+  @Output() clone = new EventEmitter();
 
   toRemove: string;
 
@@ -42,6 +44,10 @@ export class PaginatedTableComponent implements OnChanges {
 
   onEdit(args) {
     this.edit.emit(args);
+  }
+
+  onCopy(args) {
+    this.clone.emit(args);
   }
 
   onRemove(args) {

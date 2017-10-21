@@ -65,9 +65,10 @@
       </div>
       <div class="form-group" [ngClass]="{'error': newPaymentForm.controls.paid?.invalid && newPaymentForm.controls.paid?.touched}">
         <em *ngIf="newPaymentForm.controls.paid?.invalid && newPaymentForm.controls.paid?.touched && newPaymentForm.controls.paid?.errors.required">＊费用必需填＊</em>
-        <em *ngIf="newPaymentForm.controls.paid?.invalid && newPaymentForm.controls.paid?.touched && newPaymentForm.controls.paid?.errors.pattern">＊请填入有效数字＊</em>           
+        <em *ngIf="newPaymentForm.controls.paid?.invalid && newPaymentForm.controls.paid?.touched && newPaymentForm.controls.paid?.errors.pattern">＊请填入有效数字＊</em>
+        <em *ngIf="newPaymentForm.controls.paid?.invalid && newPaymentForm.controls.paid?.touched && newPaymentForm.controls.paid?.errors.greaterThanZero">费用必需大于零</em>                   
         <input class="form-control" type="text" name="paid" placeholder="工时" [(ngModel)]="payment.paid" pattern="^[.0-9]{1,}$"
-          required>
+          required greaterThanZero>
       </div>
       <div class="form-check" *ngIf="mode === 'update'">
         <label class="form-check-label">
