@@ -143,9 +143,16 @@ export class WorktimeComponent extends PageBasedComponent implements OnInit {
   }
 
   copyItem(args) {
-    this.currentWorktime = args;
-    delete this.currentWorktime.id;
-    this.currentWorktime.worktime = 0;
+    this.currentWorktime = {
+      id: 0,
+      employee: args.employee,
+      project: args.project,
+      worktype: args.worktype,
+      year: args.year,
+      month: args.month,
+      worktime: 0,
+      verified: false
+    };
     this.editMode = "new";
     super.copyItem(args);
   }

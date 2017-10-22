@@ -144,7 +144,17 @@ export class PaymentComponent extends PageBasedComponent implements OnInit {
   }
 
   copyItem(args) {
-    this.currentPayment = args;
+    this.currentPayment = {
+      id: 0,
+      employee: args.employee,
+      project: args.project,
+      worktype: args.worktype,
+      year: args.year,
+      month: args.month,
+      isUpperHalf: true,
+      paid: 0,
+      verified: false
+    };
     delete this.currentPayment.id;
     this.currentPayment.paid = 0;
     this.editMode = "new";
